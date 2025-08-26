@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@apollo/client": "^4.0.1",
+    "@types/axios": "^0.9.36",
+    "apollo-server-express": "^3.13.0",
+    "axios": "^1.11.0",
+    "graphql": "^16.11.0"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.2.3",
+    "tsx": "^4.20.5"
+  },
+  "scripts": {
+    "dev": "nodemon --exec tsx src/index.ts"
+  }
+}
