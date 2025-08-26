@@ -2,13 +2,16 @@ import { Application } from "express";
 import express from "express";
 import Database from "./config/database";
 import UserRoutes from "./routes/userRoutes";
-import cors from "cors"
+import MatchRoutes from "./routes/matchRoute";
+import PlayerRoutes from "./routes/playerRoute"; // ✅ Import PlayerRoutes
+import cors from "cors";
+
 class AppServer {
   public static app: Application = express();
 
   public static async run() {
     await this.connectDB();
-    this.app.use(cors())
+    this.app.use(cors());
     this.app.use(express.json());
     this.getAllRoutes();
     this.Listen();
@@ -32,8 +35,9 @@ class AppServer {
 
   private static getAllRoutes() {
     this.app.use("/api/users", UserRoutes.allroutes());
+    this.app.use("/api/matches", MatchRoutes.allRoutes());
+    this.app.use("/api/players", PlayerRoutes.allRoutes()); // ✅ Register PlayerRoutes
   }
-  
 }
 
 export default AppServer;
