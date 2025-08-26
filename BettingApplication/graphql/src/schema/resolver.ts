@@ -27,19 +27,48 @@ export const resolvers = {
       }
     ) => {
       try {
-        console.log("hi");
         
         const res = await axios.post(`${BACKEND_URL}/createUser`, args);
-   
+        console.log(res.data);
+        
         return {
-          id: res.data.data._id,
-          name: res.data.data.name,
-          email: res.data.data.email,
-          phoneNumber: res.data.data.phoneNumber,
+          id: res.data._id,
+          name: res.data.name,
+          email: res.data.email,
+          phoneNumber: res.data.phoneNumber,
         };
       } catch (error) {
-        console.error(error);
+         if (error.response && error.response.data?.message) {
+          throw new Error(error.response.data.message);
+        }
+        throw new Error("Something went wrong while creating user");
       }
     },
+   // resolvers.ts
+loginUser: async (_: any, args: { email: string; password: string }) => {
+  try {
+    const res = await axios.post(`${BACKEND_URL}/loginUser`, {
+      email: args.email,
+      password: args.password,
+    });
+
+    return {
+      token: res.data.token,
+      user: {
+        id: res.data.user._id,
+        name: res.data.user.name,
+        email: res.data.user.email,
+        phoneNumber: res.data.user.phoneNumber,
+      },
+    };
+  } catch (error: any) {
+    if (error.response && error.response.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("Invalid email or password");
+  }
+},
+
   },
+
 };

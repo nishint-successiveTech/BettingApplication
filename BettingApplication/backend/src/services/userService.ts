@@ -7,13 +7,15 @@ class UserService {
   //(Register)
   public static async createUser(userData: IUser) {
     const existingUser = await UserRepository.findByEmail(userData.email);
+
     if (existingUser) {
       throw new Error("User already exists");
     }
 
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashedPassword;
-
+    console.log("userData ser",userData);
+    
     return await UserRepository.createUser(userData);
   }
 
@@ -32,6 +34,8 @@ class UserService {
     const token = jwt.sign({ id: user._id, email: user.email }, "SECRET_KEY", {
       expiresIn: "1h",
     });
+
+
 
     return { token, user };
   }

@@ -13,15 +13,15 @@ class UserController {
     }
     
     // ✅ Login User
-    public static async loginUser(req: Request, res: Response) {
-        try {
-            const { email, password } = req.body;
-            const result = await UserService.loginUser(email, password);
-            res.json(result);
-        } catch (error: any) {
-            res.status(400).json({ message: error.message });
-        }
+     public static async loginUser(req: Request, res: Response) {
+    try {
+      const { email, password } = req.body;
+      const { token, user } = await UserService.loginUser(email, password);
+      res.status(200).json({ token, user });
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
     }
+  }
 }
 
 export default UserController;
