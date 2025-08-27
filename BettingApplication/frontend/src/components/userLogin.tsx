@@ -23,31 +23,59 @@ export default function LoginForm() {
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER);
 
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setError(null);
+  //   setSuccess(null);
+
+  //   try {
+  //     const { data } = await loginUser({
+  //       variables: { email, password },
+  //     });
+
+  //     if (data?.loginUser?.token) {
+  //       // token save
+  //       localStorage.setItem("token", data.loginUser.token);
+
+  //       setEmail("");
+  //       setPassword("");
+
+  //       setSuccess("✅ Logged in successfully!");
+  //       setTimeout(() => setSuccess(null), 3000);
+  //       setTimeout(() => router.push("/welcomeScreen"), 1000);
+  //     }
+  //   } catch (err: any) {
+  //     setError(err.message || "Login failed");
+  //   }
+  // };
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setSuccess(null);
+  e.preventDefault();
+  setError(null);
+  setSuccess(null);
 
-    try {
-      const { data } = await loginUser({
-        variables: { email, password },
-      });
+  try {
+    const { data } = await loginUser({
+      variables: { email, password },
+    });
 
-      if (data?.loginUser?.token) {
-        // token save
-        localStorage.setItem("token", data.loginUser.token);
+    if (data?.loginUser?.token) {
+      // token save
+      localStorage.setItem("token", data.loginUser.token);
 
-        setEmail("");
-        setPassword("");
+      // 👇 yeh add kar de (email bhi save karna hoga)
+      localStorage.setItem("userEmail", data.loginUser.user.email);
 
-        setSuccess("✅ Logged in successfully!");
-        setTimeout(() => setSuccess(null), 3000);
-        setTimeout(() => router.push("/match"), 1000);
-      }
-    } catch (err: any) {
-      setError(err.message || "Login failed");
+      setEmail("");
+      setPassword("");
+
+      setSuccess("✅ Logged in successfully!");
+      setTimeout(() => setSuccess(null), 3000);
+      setTimeout(() => router.push("/welcomeScreen"), 1000);
     }
-  };
+  } catch (err: any) {
+    setError(err.message || "Login failed");
+  }
+};
 
   return (
     <Box
@@ -187,3 +215,14 @@ export default function LoginForm() {
     </Box>
   );
 }
+
+
+
+
+
+
+
+
+
+
+

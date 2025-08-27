@@ -1,12 +1,21 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
+  # -------------------------------
   # User type
+  # -------------------------------
   type User {
     id: ID!
     name: String!
     email: String!
     phoneNumber: String!
+    money: Int!
+  }
+   type WalletResponse {
+    email: String!
+    balance: Int!
+    deposited: Int
+    withdrawn: Int
   }
 
   # Auth payload for login
@@ -15,7 +24,9 @@ export const typeDefs = gql`
     user: User!
   }
 
-  # Match type
+  # -------------------------------
+  # REST Match type
+  # -------------------------------
   type Match {
     id: ID!
     teamA: String!
@@ -26,7 +37,9 @@ export const typeDefs = gql`
     startTime: String
   }
 
+  # -------------------------------
   # Player type
+  # -------------------------------
   type Player {
     id: ID!
     name: String!
@@ -35,15 +48,75 @@ export const typeDefs = gql`
     odds: Float!
   }
 
-  # Queries
-  type Query {
-    matches: [Match]          # All matches
-    match(id: ID!): Match     # Single match
-    players: [Player]         # All players
+  # -------------------------------
+  # Cricket Match type
+  # -------------------------------
+  type CricketMatch {
+    id: ID!
+    dateTimeGMT: String!
+    matchType: String!
+    status: String!
+    ms: String!
+    t1: String!
+    t2: String!
+    t1s: String
+    t2s: String
+    t1img: String
+    t2img: String
+    series: String!
   }
 
+  # Delete response type
+  type DeleteResponse {
+    message: String!
+  }
+  type UserMoney {
+    email: String!
+    money: Int!
+  }
+
+  # -------------------------------
+  # Queries
+  # -------------------------------
+  type Query {
+    # REST Matches
+    matches: [Match]
+    match(id: ID!): Match
+
+    # Players
+    players: [Player]
+
+    # Cricket Matches
+    cricketMatches: [CricketMatch!]!
+    cricketMatch(id: ID!): CricketMatch
+
+    # User Money Query
+    getUserMoney(email: String!): UserMoney!
+
+  }
+
+  # -------------------------------
+  # Input types
+  # -------------------------------
+  input UpdateCricketMatchInput {
+    dateTimeGMT: String
+    matchType: String
+    status: String
+    ms: String
+    t1: String
+    t2: String
+    t1s: String
+    t2s: String
+    t1img: String
+    t2img: String
+    series: String
+  }
+
+  # -------------------------------
   # Mutations
+  # -------------------------------
   type Mutation {
+    # User Mutations
     createUser(
       name: String!
       email: String!
@@ -52,5 +125,31 @@ export const typeDefs = gql`
     ): User
 
     loginUser(email: String!, password: String!): AuthPayload
+
+    # CricketMatch Mutations
+    createCricketMatch(
+      id: ID!
+      dateTimeGMT: String!
+      matchType: String!
+      status: String!
+      ms: String!
+      t1: String!
+      t2: String!
+      t1s: String
+      t2s: String
+      t1img: String
+      t2img: String
+      series: String!
+    ): CricketMatch!
+
+    updateCricketMatch(
+      id: ID!
+      updateData: UpdateCricketMatchInput!
+    ): CricketMatch!
+
+    deleteCricketMatch(id: ID!): DeleteResponse!
+
+     depositMoney(email: String!, amount: Int!): WalletResponse
+    withdrawMoney(email: String!, amount: Int!): WalletResponse
   }
 `;

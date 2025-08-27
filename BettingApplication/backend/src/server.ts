@@ -5,6 +5,8 @@ import UserRoutes from "./routes/userRoutes";
 import MatchRoutes from "./routes/matchRoute";
 import PlayerRoutes from "./routes/playerRoute"; // ✅ Import PlayerRoutes
 import cors from "cors";
+import CricketMatchController from "./controllers/cricketMatchController";
+import CricketMatchRoutes from "./routes/cricketMatchRoute";
 
 class AppServer {
   public static app: Application = express();
@@ -37,6 +39,7 @@ class AppServer {
     this.app.use("/api/users", UserRoutes.allroutes());
     this.app.use("/api/matches", MatchRoutes.allRoutes());
     this.app.use("/api/players", PlayerRoutes.allRoutes()); // ✅ Register PlayerRoutes
+    this.app.use("/api/cricketMatch", CricketMatchRoutes.allroutes());
   }
 }
 

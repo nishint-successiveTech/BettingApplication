@@ -159,7 +159,7 @@ console.log("*********");
               mb: 3,
             }}
           >
-            Sattebazzi.com
+            BettingBaazi.com
           </Typography>
 
           {/* Loading Indicator */}
@@ -256,7 +256,7 @@ console.log("*********");
             },
           }}
         >
-          Sattebazzi.com
+          BettingBaazi.com
         </Typography>
 
         {/* Subtitle */}

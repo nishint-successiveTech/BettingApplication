@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 import { useMutation } from "@apollo/client/react";
 import { CREATE_USER } from "../graphql/mutations";
 import {
@@ -24,7 +23,6 @@ export default function UserForm() {
   const [success, setSuccess] = useState<string | null>(null);
   const router = useRouter();
 
-
   const [addUserMutation, { loading }] = useMutation(CREATE_USER);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -38,17 +36,20 @@ export default function UserForm() {
       });
 
       if (data?.createUser) {
+        // Reset form
         setName("");
         setEmail("");
         setPhoneNumber("");
         setPassword("");
 
-        setSuccess("✅ User registered successfully!");
-        setTimeout(() => setSuccess(null), 3000);
-        setTimeout(() => {
-  router.push("/login"); // ✅ redirect to login page
-}, 1000); // 1 second delay
+        // 🎉 Success message with bonus coins
+        setSuccess("✅ Hurray! You got 1000 coins on registration 🎉");
+        setTimeout(() => setSuccess(null), 4000); // hide after 4 seconds
 
+        // Redirect to login after 1 second
+        setTimeout(() => {
+          router.push("/login");
+        }, 1000);
       }
     } catch (err: any) {
       setError(err.message || "Something went wrong");
@@ -58,7 +59,7 @@ export default function UserForm() {
   return (
     <Box
       sx={{
-        position: "fixed", // 👈 ensures it sticks to whole screen
+        position: "fixed",
         top: 0,
         left: 0,
         width: "100vw",
@@ -67,7 +68,7 @@ export default function UserForm() {
         alignItems: "center",
         justifyContent: "center",
         background: "radial-gradient(circle at top, #0f2027, #203a43, #2c5364)",
-        overflow: "auto", // in case content is larger on mobile
+        overflow: "auto",
         p: 2,
       }}
     >

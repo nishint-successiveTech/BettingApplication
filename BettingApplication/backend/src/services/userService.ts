@@ -14,8 +14,8 @@ class UserService {
 
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashedPassword;
-    console.log("userData ser",userData);
-    
+    console.log("userData ser", userData);
+
     return await UserRepository.createUser(userData);
   }
 
@@ -35,9 +35,20 @@ class UserService {
       expiresIn: "1h",
     });
 
-
-
     return { token, user };
+  }
+
+  public static async getUserMoneyByEmail(email: string) {
+    console.log(email);
+    return await UserRepository.getUserMoneyByEmail(email);
+  }
+
+  static async deposit(email: string, amount: number) {
+    return await UserRepository.depositMoney(email, amount);
+  }
+
+  static async withdraw(email: string, amount: number) {
+    return await UserRepository.withdrawMoney(email, amount);
   }
 }
 
