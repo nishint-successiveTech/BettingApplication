@@ -3,38 +3,8 @@ import CricketMatchModel, { ICricketMatch } from "../models/cricketMatchModel";
 
 class CricketMatchRepository {
   public static async getAllMatches(): Promise<ICricketMatch[]> {
-    //return await CricketMatchModel.find();
-    return await CricketMatchModel.find().sort({ dateTimeGMT: -1 });
+    return await CricketMatchModel.find().sort({ dateTimeGMT: 1 });
   }
-
-  // public static async getAllMatchesGrouped(): Promise<{
-  //   live: ICricketMatch[];
-  //   upcoming: ICricketMatch[];
-  //   completed: ICricketMatch[];
-  // }> {
-  //   const matches = await CricketMatchModel.find().sort({ dateTimeGMT: 1 });
-
-  //   const live: ICricketMatch[] = [];
-  //   const upcoming: ICricketMatch[] = [];
-  //   const completed: ICricketMatch[] = [];
-
-  //   matches.forEach((match) => {
-  //     const status = match.status.toLowerCase();
-  //     if (status.includes("live")) {
-  //       live.push(match);
-  //     } else if (
-  //       status.includes("not started") ||
-  //       status.includes("upcoming") ||
-  //       status.includes("fixture")
-  //     ) {
-  //       upcoming.push(match);
-  //     } else {
-  //       completed.push(match);
-  //     }
-  //   });
-
-  //   return { live, upcoming, completed };
-  // }
 
   public static async getMatchById(id: string): Promise<ICricketMatch | null> {
     return await CricketMatchModel.findOne({ id });

@@ -92,23 +92,24 @@ export const GET_CRICKET_MATCHES = gql`
 `;
 
 export const GET_CRICKET_MATCH = gql`
-  query GetCricketMatch($id: ID!) {
-    cricketMatch(id: $id) {
+  query CricketMatches($cricketMatchId: String!) {
+    cricketMatch(id: $cricketMatchId) {
+      matchType
       id
       dateTimeGMT
-      matchType
-      status
       ms
-      t1
-      t2
-      t1s
-      t2s
-      t1img
-      t2img
       series
+      status
+      t1
+      t1img
+      t1s
+      t2
+      t2img
+      t2s
     }
   }
 `;
+
 export const GET_USER_MONEY = gql`
   query GetUserMoney($email: String!) {
     getUserMoney(email: $email) {

@@ -28,7 +28,7 @@ export const typeDefs = gql`
   # REST Match type
   # -------------------------------
   type Match {
-    id: ID!
+    id: String!
     teamA: String!
     teamB: String!
     scoreA: Int
@@ -52,7 +52,7 @@ export const typeDefs = gql`
   # Cricket Match type
   # -------------------------------
   type CricketMatch {
-    id: ID!
+    id: String!
     dateTimeGMT: String!
     matchType: String!
     status: String!
@@ -81,14 +81,14 @@ export const typeDefs = gql`
   type Query {
     # REST Matches
     matches: [Match]
-    match(id: ID!): Match
+    match(id: String!): Match
 
     # Players
     players: [Player]
 
     # Cricket Matches
     cricketMatches: [CricketMatch!]!
-    cricketMatch(id: ID!): CricketMatch
+    cricketMatch(id: String!): CricketMatch
 
     # User Money Query
     getUserMoney(email: String!): UserMoney!

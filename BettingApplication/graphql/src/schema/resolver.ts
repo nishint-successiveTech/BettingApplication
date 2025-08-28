@@ -25,7 +25,7 @@ export const resolvers = {
 
     // Fetch a single cricket match by ID
     cricketMatch: async (_: any, args: { id: string }) => {
-      const res = await axios.get(`${BACKEND_URL}/cricketMatches/${args.id}`);
+      const res = await axios.get(`${BACKEND_URL}/cricketMatch/${args.id}`);
       const match = res.data;
       return {
         id: match.id,
