@@ -7,6 +7,8 @@ import PlayerRoutes from "./routes/playerRoute"; // ✅ Import PlayerRoutes
 import cors from "cors";
 import CricketMatchController from "./controllers/cricketMatchController";
 import CricketMatchRoutes from "./routes/cricketMatchRoute";
+import WinnerController from "./controllers/winnerController";
+import WinnerRoutes from "./routes/winnerRoute";
 
 class AppServer {
   public static app: Application = express();
