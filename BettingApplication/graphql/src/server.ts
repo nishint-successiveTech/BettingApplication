@@ -1,21 +1,61 @@
+// import express, { Application } from "express";
+// import { ApolloServer } from "apollo-server-express";
+// import { typeDefs } from "./schema/typeDefs";
+// import { resolvers } from "./schema/resolver"; 
+
+// export async function startGraphQL() {
+//   const app: Application = express();
+
+//   const server = new ApolloServer({
+//     typeDefs,
+//     resolvers, 
+//   });
+
+//   await server.start();
+//   server.applyMiddleware({ app, path: "/graphql" });
+
+//   const PORT = process.env.GRAPHQL_PORT || 4000;
+//   app.listen(PORT, () => {
+//     console.log(`🚀 GraphQL Server running at http://localhost:${PORT}/graphql`);
+//   });
+// }
+
 import express, { Application } from "express";
+import http from "http";
 import { ApolloServer } from "apollo-server-express";
+import { execute, subscribe } from "graphql";
+import { SubscriptionServer } from "subscriptions-transport-ws";
+import { makeExecutableSchema } from "@graphql-tools/schema";
+import { PubSub } from "graphql-subscriptions";
+import { WebSocketServer } from "ws";
+import { useServer } from "graphql-ws/use/ws";
 import { typeDefs } from "./schema/typeDefs";
-import { resolvers } from "./schema/resolver"; 
+import { resolvers } from "./schema/resolver";
 
-export async function startGraphQL() {
+export async function createServer(): Promise<http.Server> {
   const app: Application = express();
+  const httpServer = http.createServer(app);
+  const pubsub = new PubSub();
 
+  // Combine typeDefs & resolvers
+  const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+  // Apollo server
   const server = new ApolloServer({
-    typeDefs,
-    resolvers, 
+    schema,
+    context: () => ({ pubsub }),
   });
 
   await server.start();
   server.applyMiddleware({ app, path: "/graphql" });
 
-  const PORT = process.env.GRAPHQL_PORT || 4000;
-  app.listen(PORT, () => {
-    console.log(`🚀 GraphQL Server running at http://localhost:${PORT}/graphql`);
-  });
+  // Subscriptions
+  const wsServer = new WebSocketServer({
+  server: httpServer,
+  path: "/graphql",
+});
+
+useServer({ schema, context: () => ({ pubsub }) }, wsServer);
+
+  return httpServer;
 }

@@ -5,10 +5,9 @@ import UserRoutes from "./routes/userRoutes";
 import MatchRoutes from "./routes/matchRoute";
 import PlayerRoutes from "./routes/playerRoute"; // ✅ Import PlayerRoutes
 import cors from "cors";
-import CricketMatchController from "./controllers/cricketMatchController";
 import CricketMatchRoutes from "./routes/cricketMatchRoute";
-import WinnerController from "./controllers/winnerController";
-import WinnerRoutes from "./routes/winnerRoute";
+import ConfirmBetRoutes from "./routes/confrimBetRoute";
+
 
 class AppServer {
   public static app: Application = express();
@@ -42,6 +41,7 @@ class AppServer {
     this.app.use("/api/matches", MatchRoutes.allRoutes());
     this.app.use("/api/players", PlayerRoutes.allRoutes()); // ✅ Register PlayerRoutes
     this.app.use("/api/cricketMatch", CricketMatchRoutes.allroutes());
+    this.app.use("/api/confirmBet",ConfirmBetRoutes.allroutes())
   }
 }
 

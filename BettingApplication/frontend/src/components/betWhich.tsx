@@ -31,6 +31,17 @@ export default function BettingPage() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
+       <Box
+      sx={{
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "radial-gradient(circle at top, #0f2027, #203a43, #2c5364)",
+    zIndex: -1, // send background behind content
+  }}
+    >
     <Box
       sx={{
         minHeight: '100vh',
@@ -196,6 +207,7 @@ export default function BettingPage() {
           Please gamble responsibly. Must be 18+ to participate.
         </Typography>
       </Container>
+    </Box>
     </Box>
   );
 }

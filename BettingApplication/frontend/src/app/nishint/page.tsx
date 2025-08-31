@@ -72,6 +72,7 @@
 "use client";
 
 import { ApolloProvider } from "@apollo/client/react"
+
 import client from "../../apollo/client";
 import { Container } from "@mui/material";
 import Nishine from "@/components/nishint";

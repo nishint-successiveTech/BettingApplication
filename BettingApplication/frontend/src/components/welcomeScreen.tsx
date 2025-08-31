@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import Withdrawals from './test'; // make sure path is correct
+
 import {
   Box,
   Typography,
@@ -234,6 +236,22 @@ const NotificationBar = () => {
           }
         }}
       >
+        <Box
+  sx={{
+    position: "fixed",
+    bottom: 16,
+    right: 16,
+    width: 300,
+    zIndex: 30,
+    backdropFilter: "blur(10px)",
+    background: "rgba(0,0,0,0.6)",
+    borderRadius: 2,
+    p: 2,
+  }}
+>
+  <Withdrawals />
+</Box>
+
         <Box display="flex" alignItems="center">
           <EmojiEventsIcon sx={{ mr: 1, fontSize: 20 }} />
           <Typography variant="body2">
