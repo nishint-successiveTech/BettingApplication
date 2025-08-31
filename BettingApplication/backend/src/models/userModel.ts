@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 1000, // Optional: default money amount for new users
   },
+  role:{
+    type:String,
+    default:"User"
+  }
 });
 
 const userModel = mongoose.model("U", userSchema);

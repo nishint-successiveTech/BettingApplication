@@ -4593,7 +4593,7 @@ const { loading, error, data } = useQuery<CricketMatchData, CricketMatchVars>(
       <div className="app-header">
         <div className="logo">
           <i className="fas fa-cricket logo-icon"></i>
-          <span>CricketBet Pro</span>
+          <span>Betting Baazi</span>
         </div>
         <div className="header-actions">
           <button className="notifications-btn">
