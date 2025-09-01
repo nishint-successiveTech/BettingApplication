@@ -1,3 +1,162 @@
+BettingApplication
+
+A full-stack betting application built with Node.js, TypeScript, GraphQL, and React/Next.js, following the Controller → Service → Repository architecture.
+
+📦 Tech Stack
+
+Backend: Node.js, TypeScript, Express, Apollo Server (GraphQL)
+
+Frontend: React, Next.js, Apollo Client
+
+Database: (configure based on your setup, e.g., MongoDB/PostgreSQL/MySQL)
+
+Architecture: Controller → Service → Repository
+
+📂 Project Structure
+BettingApplication/
+├── backend/                 # Node.js + GraphQL backend
+│   ├── src/
+│   │   ├── config/          # Environment & DB config
+│   │   ├── controllers/     # Handles requests (entry point for routes/resolvers)
+│   │   ├── interfaces/      # TypeScript interfaces
+│   │   ├── middleware/      # Auth, logging, validation, etc.
+│   │   ├── models/          # Database models (ORM/ODM)
+│   │   ├── pages/           # (Optional) API routes if needed
+│   │   ├── repositories/    # Data access layer
+│   │   ├── routes/          # REST/GraphQL route bindings
+│   │   ├── seed/            # Initial DB seeders
+│   │   ├── services/        # Business logic
+│   │   ├── utils/           # Utility functions
+│   │   ├── index.ts         # App entry point
+│   │   └── server.ts        # Server setup
+│   └── .env.example         # Sample environment variables
+│
+├── frontend/                # React + Next.js frontend
+│   ├── src/
+│   │   ├── apollo/          # Apollo Client setup
+│   │   ├── app/             # Next.js App Router
+│   │   ├── components/      # UI components
+│   │   └── graphql/         # Queries & mutations
+│   ├── public/              # Static assets
+│   ├── next.config.ts       # Next.js config
+│   └── package.json
+│
+├── graphql/                 # Shared GraphQL setup
+│   ├── schema/              # GraphQL schema definitions
+│   ├── resolvers.ts         # GraphQL resolvers
+│   ├── typeDefs.ts          # GraphQL type definitions
+│   ├── pubsub.ts            # PubSub setup (for subscriptions)
+│   └── index.ts
+│
+├── screenshots/             # App screenshots
+├── package.json
+└── README.md
+
+🚀 Features
+
+Place, update, and manage bets
+
+Query available betting options via GraphQL
+
+Real-time updates (subscriptions)
+
+Clean separation of concerns with layered architecture
+
+React/Next.js frontend with Apollo Client
+
+⚙️ Getting Started
+Prerequisites
+
+Node.js >= 18
+
+npm or yarn
+
+Database (MongoDB/PostgreSQL/MySQL depending on your configuration)
+
+Backend Setup
+cd backend
+npm install
+
+# Copy env file and configure
+cp .env.sample .env
+
+# Run in dev mode
+npm run dev
+
+
+Backend runs at: http://localhost:4000/graphql
+
+Frontend Setup
+cd frontend
+npm install
+npm run dev
+
+
+Frontend runs at: http://localhost:3000
+
+🏗️ Architecture Overview
+Controllers
+
+Entry point for handling API requests or GraphQL resolvers
+
+Responsible for request validation and passing work to services
+
+Services
+
+Contains business logic
+
+Coordinates data between controllers and repositories
+
+Repositories
+
+Handles all database interactions
+
+Abstracts persistence logic away from services
+
+GraphQL
+
+Schema defines API contracts
+
+Resolvers map GraphQL operations to controllers/services
+
+Apollo Client/Server for frontend/backend communication
+
+📸 Screenshots
+
+Screenshots of the app can be found in the /screenshots
+ folder.
+
+🧪 Scripts
+
+Backend:
+
+npm run dev      # start in development
+npm run build    # build TypeScript
+npm run start    # run production build
+
+
+Frontend:
+
+npm run dev      # start Next.js dev server
+npm run build    # build frontend
+npm run start    # run production build
+
+🤝 Contributing
+
+Fork the repo
+
+Create a new branch: git checkout -b feature/your-feature
+
+Commit changes: git commit -m "Added new feature"
+
+Push branch: git push origin feature/your-feature
+
+Open a Pull Request
+
+📄 License
+
+Add your preferred license here (MIT, Apache, etc.)
+
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-06-58" src="https://github.com/user-attachments/assets/5624dd9a-8c8d-4fa2-a2b8-a506d94c5fc4" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-07-02" src="https://github.com/user-attachments/assets/b5534fea-0a8a-4a14-8217-cbef9078fca8" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-07-44" src="https://github.com/user-attachments/assets/cb7d2a32-e70d-48e8-8a6b-788cf23bb0a0" />
