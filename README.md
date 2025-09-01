@@ -1,7 +1,5 @@
 # 🚀 Betting Application
 
-
-
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-06-58" src="https://github.com/user-attachments/assets/5624dd9a-8c8d-4fa2-a2b8-a506d94c5fc4" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-07-02" src="https://github.com/user-attachments/assets/b5534fea-0a8a-4a14-8217-cbef9078fca8" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-07-44" src="https://github.com/user-attachments/assets/cb7d2a32-e70d-48e8-8a6b-788cf23bb0a0" />
@@ -22,9 +20,6 @@
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-10-49" src="https://github.com/user-attachments/assets/91886e5b-7f0c-4257-9372-5996759086c4" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-10-51" src="https://github.com/user-attachments/assets/2311b598-01f1-489a-bff4-1fde8c5500f3" />
 
-
-th="1920" height="1080" alt="Screenshot from 2025-09-02 00-10-41" src="https://github.com/user-attachment<img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-11-51" src="https://github.com/user-attachments/assets/d2acac9b-8c42-4c0d-97cf-4b95eb6e7919" />
-s/assets/32a40dba-5767-4452-bc12-3687db2170c3" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-11-54" src="https://github.com/user-attachments/assets/77dc4bc7-00d5-499e-a58a-cecf9a22ea09" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-12-20" src="https://github.com/user-attachments/assets/c11f1ae8-f701-4f4e-b826-6b0139499147" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-12-27" src="https://github.com/user-attachments/assets/827df036-cf94-4482-9f30-592d9b48865f" />
