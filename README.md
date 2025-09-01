@@ -36,7 +36,7 @@
 ✅ **Controller → Service → Repository** architecture  
 ✅ **JWT Authentication & Authorization**  
 ✅ **Database-agnostic** design (MongoDB/PostgreSQL/MySQL)  
-✅ **Docker-ready** for easy deployment  
+ 
 
 ---
 
@@ -75,6 +75,15 @@
  ┣ 📂 screenshots/            # App screenshots
  ┣ 📜 package.json
  ┗ 📜 README.md
+
+
+
+
+
+
+
+
+
 
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-06-58" src="https://github.com/user-attachments/assets/5624dd9a-8c8d-4fa2-a2b8-a506d94c5fc4" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-07-02" src="https://github.com/user-attachments/assets/b5534fea-0a8a-4a14-8217-cbef9078fca8" />
