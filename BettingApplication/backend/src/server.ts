@@ -3,11 +3,11 @@ import express from "express";
 import Database from "./config/database";
 import UserRoutes from "./routes/userRoutes";
 import MatchRoutes from "./routes/matchRoute";
-import PlayerRoutes from "./routes/playerRoute"; // ✅ Import PlayerRoutes
+import PlayerRoutes from "./routes/playerRoute";
 import cors from "cors";
 import CricketMatchRoutes from "./routes/cricketMatchRoute";
 import ConfirmBetRoutes from "./routes/confrimBetRoute";
-
+import EmailRoutes from "./routes/emailRoutes"; // ✅ Import EmailRoutes
 
 class AppServer {
   public static app: Application = express();
@@ -39,9 +39,10 @@ class AppServer {
   private static getAllRoutes() {
     this.app.use("/api/users", UserRoutes.allroutes());
     this.app.use("/api/matches", MatchRoutes.allRoutes());
-    this.app.use("/api/players", PlayerRoutes.allRoutes()); // ✅ Register PlayerRoutes
+    this.app.use("/api/players", PlayerRoutes.allRoutes());
     this.app.use("/api/cricketMatch", CricketMatchRoutes.allroutes());
-    this.app.use("/api/confirmBet",ConfirmBetRoutes.allroutes())
+    this.app.use("/api/confirmBet", ConfirmBetRoutes.allroutes());
+    this.app.use("/api/email", EmailRoutes.allroutes()); 
   }
 }
 

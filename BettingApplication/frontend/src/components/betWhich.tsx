@@ -25,7 +25,7 @@ const pulse = keyframes`
 export default function BettingPage() {
    const searchParams = useSearchParams();
   const matchId = searchParams.get("matchId");
-  console.log("..........."+matchId);
+  // console.log("..........."+matchId);
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

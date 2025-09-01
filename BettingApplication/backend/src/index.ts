@@ -1,6 +1,7 @@
 import AppServer from "./server";
 import { seedPlayers } from "./seed/playerSeed";
 import CricketMatchSeed from "./seed/cricketMatchSeed";
+import EmailService from "./utils/mailer";
 
 console.log("Hello, Betting 1.0!");
 
