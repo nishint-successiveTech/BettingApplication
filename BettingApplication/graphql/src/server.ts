@@ -1,25 +1,3 @@
-// import express, { Application } from "express";
-// import { ApolloServer } from "apollo-server-express";
-// import { typeDefs } from "./schema/typeDefs";
-// import { resolvers } from "./schema/resolver"; 
-
-// export async function startGraphQL() {
-//   const app: Application = express();
-
-//   const server = new ApolloServer({
-//     typeDefs,
-//     resolvers, 
-//   });
-
-//   await server.start();
-//   server.applyMiddleware({ app, path: "/graphql" });
-
-//   const PORT = process.env.GRAPHQL_PORT || 4000;
-//   app.listen(PORT, () => {
-//     console.log(`🚀 GraphQL Server running at http://localhost:${PORT}/graphql`);
-//   });
-// }
-
 import express, { Application } from "express";
 import http from "http";
 import { ApolloServer } from "apollo-server-express";
@@ -51,11 +29,11 @@ export async function createServer(): Promise<http.Server> {
 
   // Subscriptions
   const wsServer = new WebSocketServer({
-  server: httpServer,
-  path: "/graphql",
-});
+    server: httpServer,
+    path: "/graphql",
+  });
 
-useServer({ schema, context: () => ({ pubsub }) }, wsServer);
+  useServer({ schema, context: () => ({ pubsub }) }, wsServer);
 
   return httpServer;
 }

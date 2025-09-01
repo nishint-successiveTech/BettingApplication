@@ -3,6 +3,6 @@ export interface IUser {
   email: string;
   phoneNumber: string;
   password: string;
-  money:Number
-  role:String
+  money: Number;
+  role: String;
 }

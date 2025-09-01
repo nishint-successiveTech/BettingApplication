@@ -1,5 +1,4 @@
-
-import playerModel,{IPlayer} from "../models/playerModel"; 
+import playerModel, { IPlayer } from "../models/playerModel";
 
 class PlayerRepository {
   public static async getAllPlayers(): Promise<IPlayer[]> {

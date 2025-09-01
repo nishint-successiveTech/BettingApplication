@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import CricketMatchService from "../services/cricketMatchService";
 
 class CricketMatchController {
-
   public static async getAllMatches(req: Request, res: Response) {
     try {
       const matches = await CricketMatchService.getAllMatches();
@@ -22,7 +21,6 @@ class CricketMatchController {
     }
   }
 
- 
   public static async createMatch(req: Request, res: Response) {
     try {
       const newMatch = await CricketMatchService.createMatch(req.body);
@@ -32,7 +30,6 @@ class CricketMatchController {
     }
   }
 
-  // ✅ Update Match
   public static async updateMatch(req: Request, res: Response) {
     try {
       const updatedMatch = await CricketMatchService.updateMatch(
@@ -47,15 +44,12 @@ class CricketMatchController {
     }
   }
 
-  // ✅ Delete Match
   public static async deleteMatch(req: Request, res: Response) {
     try {
       const result = await CricketMatchService.deleteMatch(req.params.id);
-      res
-        .status(200)
-        .json({
-          message: result.deletedCount ? "Match deleted" : "Match not found",
-        });
+      res.status(200).json({
+        message: result.deletedCount ? "Match deleted" : "Match not found",
+      });
     } catch (error: any) {
       res.status(400).json({ message: error.message });
     }

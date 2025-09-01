@@ -3,7 +3,7 @@
 import { ApolloProvider } from "@apollo/client/react";
 import client from "../../apollo/client";
 import { Container } from "@mui/material";
-import Withdraw from "@/components/withdraw"
+import Withdraw from "@/components/withdraw";
 export default function WithdrawPage() {
   return (
     <ApolloProvider client={client}>

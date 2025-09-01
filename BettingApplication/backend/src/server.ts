@@ -42,7 +42,7 @@ class AppServer {
     this.app.use("/api/players", PlayerRoutes.allRoutes());
     this.app.use("/api/cricketMatch", CricketMatchRoutes.allroutes());
     this.app.use("/api/confirmBet", ConfirmBetRoutes.allroutes());
-    this.app.use("/api/email", EmailRoutes.allroutes()); 
+    this.app.use("/api/email", EmailRoutes.allroutes());
   }
 }
 

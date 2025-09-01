@@ -22,19 +22,18 @@ class ConfirmBetRepository {
 
     const winningBets = matchBets.filter((bet) => bet.teamId === data.teamId);
 
-    console.log(winningBets)
+    console.log(winningBets);
 
-    for(let obj2 of winningBets){
-        const userByEmail=await userModel.findOne({email:obj2.userEmail});
+    for (let obj2 of winningBets) {
+      const userByEmail = await userModel.findOne({ email: obj2.userEmail });
 
-        if (!userByEmail) {
-      console.warn(`No user found with email: ${obj2.userEmail}`);
-      continue; // skip this bet
-    }
-      
-    
-        userByEmail.money+=obj2.betAmount*2;
-        await userByEmail.save();
+      if (!userByEmail) {
+        console.warn(`No user found with email: ${obj2.userEmail}`);
+        continue; // skip this bet
+      }
+
+      userByEmail.money += obj2.betAmount * 2;
+      await userByEmail.save();
     }
     return winningBets;
   }

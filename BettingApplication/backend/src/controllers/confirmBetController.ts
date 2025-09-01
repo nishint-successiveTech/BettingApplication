@@ -17,7 +17,7 @@ class ConfirmBetController {
     });
   }
 
-    public static async winnerDeclare(req: Request, res: Response) {
+  public static async winnerDeclare(req: Request, res: Response) {
     const { matchId, teamId, userEmail, betAmount } = req.body;
 
     const winnerDeclare = await ConfirmBetService.winnerDeclare({

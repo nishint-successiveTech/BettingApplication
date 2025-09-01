@@ -5,7 +5,7 @@ export interface IMatch extends Document {
   teamB: string;
   scoreA?: number;
   scoreB?: number;
-  status: string; // e.g., "live", "completed", "upcoming"
+  status: string;
   startTime: Date;
 }
 

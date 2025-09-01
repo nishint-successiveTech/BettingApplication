@@ -1,4 +1,3 @@
-// repositories/matchRepository.ts
 import CricketMatchModel, { ICricketMatch } from "../models/cricketMatchModel";
 
 class CricketMatchRepository {

@@ -160,7 +160,6 @@
 //   );
 // }
 
-
 // "use client";
 
 // import { useState } from "react";
@@ -236,7 +235,7 @@
 
 //       setSuccess(
 //         `✅ Sent ₹${numericAmount} from ${sender} to ${receiver}.
-//          Sender balance: ₹${withdrawData?.withdrawMoney?.balance}, 
+//          Sender balance: ₹${withdrawData?.withdrawMoney?.balance},
 //          Receiver balance: ₹${depositData?.depositMoney?.balance}`
 //       );
 
@@ -336,7 +335,6 @@
 //     </Box>
 //   );
 // }
-
 
 "use client";
 
@@ -460,8 +458,16 @@ export default function SendMoney() {
           Send Money
         </Typography>
 
-        {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-        {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
+          </Alert>
+        )}
+        {success && (
+          <Alert severity="success" sx={{ mb: 2 }}>
+            {success}
+          </Alert>
+        )}
 
         <form onSubmit={handleSubmit}>
           {/* Receiver Email */}

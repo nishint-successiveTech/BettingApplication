@@ -146,10 +146,16 @@ export default function Deposit() {
               fontWeight: "bold",
               borderRadius: "50px",
               background: "linear-gradient(90deg, #00f5ff, #ff00d4)",
-              "&:hover": { background: "linear-gradient(90deg, #ff00d4, #00f5ff)" },
+              "&:hover": {
+                background: "linear-gradient(90deg, #ff00d4, #00f5ff)",
+              },
             }}
           >
-            {loading ? <CircularProgress size={24} color="inherit" /> : "Deposit"}
+            {loading ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              "Deposit"
+            )}
           </Button>
         </form>
       </Paper>

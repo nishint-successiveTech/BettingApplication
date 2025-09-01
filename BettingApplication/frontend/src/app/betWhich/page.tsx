@@ -3,7 +3,7 @@
 import { ApolloProvider } from "@apollo/client/react";
 import client from "../../apollo/client";
 import { Container } from "@mui/material";
-import Checker from "@/components/betWhich" // make sure this path is correct
+import Checker from "@/components/betWhich"; // make sure this path is correct
 
 export default function CheckerPage() {
   return (

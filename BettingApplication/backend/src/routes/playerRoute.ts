@@ -6,8 +6,7 @@ class PlayerRoutes {
   public static allRoutes() {
     const router = Router();
 
-    router.get("/all", PlayerController.getAllPlayers); // get all players
-    // agar future me seed/add/delete chahiye to yahan add kar sakte ho
+    router.get("/all", PlayerController.getAllPlayers);
 
     return router;
   }

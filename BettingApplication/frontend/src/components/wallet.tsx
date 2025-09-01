@@ -38,10 +38,22 @@ interface UserMoney {
 }
 
 const mockTransactions = [
-  { id: 1, type: "deposit", amount: 1000, date: "2023-10-15", status: "completed" },
+  {
+    id: 1,
+    type: "deposit",
+    amount: 1000,
+    date: "2023-10-15",
+    status: "completed",
+  },
   { id: 2, type: "bet", amount: -250, date: "2023-10-14", status: "completed" },
   { id: 3, type: "win", amount: 500, date: "2023-10-14", status: "completed" },
-  { id: 4, type: "withdrawal", amount: -300, date: "2023-10-13", status: "pending" },
+  {
+    id: 4,
+    type: "withdrawal",
+    amount: -300,
+    date: "2023-10-13",
+    status: "pending",
+  },
 ];
 
 export default function Wallet() {
@@ -71,14 +83,14 @@ export default function Wallet() {
   return (
     <Box
       sx={{
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: "radial-gradient(circle at top, #0f2027, #203a43, #2c5364)",
-    zIndex: -1, // send background behind content
-  }}
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: "radial-gradient(circle at top, #0f2027, #203a43, #2c5364)",
+        zIndex: -1, // send background behind content
+      }}
     >
       {/* Animated background circles */}
       <Box
@@ -89,7 +101,8 @@ export default function Wallet() {
           width: "300px",
           height: "300px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(0,245,255,0.2) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(0,245,255,0.2) 0%, transparent 70%)",
           animation: "float 8s ease-in-out infinite",
         }}
       />
@@ -101,7 +114,8 @@ export default function Wallet() {
           width: "400px",
           height: "400px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,0,212,0.2) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(255,0,212,0.2) 0%, transparent 70%)",
           animation: "float 10s ease-in-out infinite",
           animationDelay: "1s",
         }}
@@ -132,7 +146,11 @@ export default function Wallet() {
           }}
         >
           <Box sx={{ textAlign: "center" }}>
-            <CircularProgress size={60} thickness={4} sx={{ color: "#00f5ff", mb: 2 }} />
+            <CircularProgress
+              size={60}
+              thickness={4}
+              sx={{ color: "#00f5ff", mb: 2 }}
+            />
             <Typography variant="h6" sx={{ color: "white" }}>
               Loading your wallet...
             </Typography>
@@ -152,12 +170,27 @@ export default function Wallet() {
           </Alert>
         </Box>
       ) : (
-        <Box sx={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", p: 4 }}>
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 2,
+            maxWidth: 1200,
+            margin: "0 auto",
+            p: 4,
+          }}
+        >
           {/* Header */}
           <Fade in timeout={800}>
             <Box sx={{ textAlign: "center", mb: 4 }}>
-              <Box display="flex" alignItems="center" justifyContent="center" mb={2}>
-                <AccountBalanceWallet sx={{ fontSize: 40, mr: 2, color: "#00f5ff" }} />
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                mb={2}
+              >
+                <AccountBalanceWallet
+                  sx={{ fontSize: 40, mr: 2, color: "#00f5ff" }}
+                />
                 <Typography
                   variant="h3"
                   sx={{
@@ -184,7 +217,8 @@ export default function Wallet() {
                 p: 4,
                 mb: 4,
                 borderRadius: "20px",
-                background: "linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
+                background:
+                  "linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(255,255,255,0.15)",
                 color: "#fff",
@@ -201,7 +235,12 @@ export default function Wallet() {
                 },
               }}
             >
-              <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={3}>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="flex-start"
+                mb={3}
+              >
                 <Box>
                   <Typography variant="h6" sx={{ opacity: 0.8, mb: 1 }}>
                     Total Balance
@@ -221,7 +260,11 @@ export default function Wallet() {
                     icon={<Security />}
                     label="Secure & Encrypted"
                     size="small"
-                    sx={{ mt: 2, background: "rgba(0,245,255,0.2)", color: "white" }}
+                    sx={{
+                      mt: 2,
+                      background: "rgba(0,245,255,0.2)",
+                      color: "white",
+                    }}
                   />
                 </Box>
                 <IconButton
@@ -250,7 +293,9 @@ export default function Wallet() {
                       background: "linear-gradient(90deg, #4caf50, #2e7d32)",
                       borderRadius: "12px",
                       fontWeight: "bold",
-                      "&:hover": { background: "linear-gradient(90deg, #2e7d32, #4caf50)" },
+                      "&:hover": {
+                        background: "linear-gradient(90deg, #2e7d32, #4caf50)",
+                      },
                     }}
                     onClick={() => router.push("/deposit")}
                   >
@@ -267,7 +312,9 @@ export default function Wallet() {
                       background: "linear-gradient(90deg, #f44336, #c62828)",
                       borderRadius: "12px",
                       fontWeight: "bold",
-                      "&:hover": { background: "linear-gradient(90deg, #c62828, #f44336)" },
+                      "&:hover": {
+                        background: "linear-gradient(90deg, #c62828, #f44336)",
+                      },
                     }}
                     onClick={() => router.push("/withdraw")}
                   >
@@ -290,7 +337,7 @@ export default function Wallet() {
                         background: "rgba(0,245,255,0.1)",
                       },
                     }}
-                     onClick={() => router.push("/sendMoney")}
+                    onClick={() => router.push("/sendMoney")}
                   >
                     Send Money To Friend
                   </Button>
@@ -321,7 +368,13 @@ export default function Wallet() {
           </Zoom>
 
           {/* Tabs and content */}
-          <Box sx={{ borderBottom: 1, borderColor: "rgba(255,255,255,0.1)", mb: 3 }}>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: "rgba(255,255,255,0.1)",
+              mb: 3,
+            }}
+          >
             <Button
               variant={activeTab === "balance" ? "contained" : "text"}
               onClick={() => setActiveTab("balance")}
@@ -329,7 +382,10 @@ export default function Wallet() {
                 mr: 2,
                 mb: -0.5,
                 borderRadius: "20px 20px 0 0",
-                background: activeTab === "balance" ? "rgba(255,255,255,0.15)" : "transparent",
+                background:
+                  activeTab === "balance"
+                    ? "rgba(255,255,255,0.15)"
+                    : "transparent",
                 color: "white",
                 "&:hover": { background: "rgba(255,255,255,0.1)" },
               }}
@@ -342,7 +398,10 @@ export default function Wallet() {
               onClick={() => setActiveTab("transactions")}
               sx={{
                 borderRadius: "20px 20px 0 0",
-                background: activeTab === "transactions" ? "rgba(255,255,255,0.15)" : "transparent",
+                background:
+                  activeTab === "transactions"
+                    ? "rgba(255,255,255,0.15)"
+                    : "transparent",
                 color: "white",
                 "&:hover": { background: "rgba(255,255,255,0.1)" },
               }}
@@ -369,20 +428,35 @@ export default function Wallet() {
                       height: "100%",
                     }}
                   >
-                    <Typography variant="h6" sx={{ mb: 2, display: "flex", alignItems: "center" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ mb: 2, display: "flex", alignItems: "center" }}
+                    >
                       <TrendingUp sx={{ mr: 1, color: "#00f5ff" }} /> Statistics
                     </Typography>
                     <Box sx={{ mb: 2 }}>
-                      <Typography variant="body2" sx={{ opacity: 0.7 }}>This Week</Typography>
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>₹2,450</Typography>
+                      <Typography variant="body2" sx={{ opacity: 0.7 }}>
+                        This Week
+                      </Typography>
+                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                        ₹2,450
+                      </Typography>
                     </Box>
                     <Box sx={{ mb: 2 }}>
-                      <Typography variant="body2" sx={{ opacity: 0.7 }}>This Month</Typography>
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>₹12,800</Typography>
+                      <Typography variant="body2" sx={{ opacity: 0.7 }}>
+                        This Month
+                      </Typography>
+                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                        ₹12,800
+                      </Typography>
                     </Box>
                     <Box>
-                      <Typography variant="body2" sx={{ opacity: 0.7 }}>Total Winnings</Typography>
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>₹87,500</Typography>
+                      <Typography variant="body2" sx={{ opacity: 0.7 }}>
+                        Total Winnings
+                      </Typography>
+                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                        ₹87,500
+                      </Typography>
                     </Box>
                   </Paper>
                 </Grid>
@@ -400,18 +474,32 @@ export default function Wallet() {
                       height: "100%",
                     }}
                   >
-                    <Typography variant="h6" sx={{ mb: 2, display: "flex", alignItems: "center" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ mb: 2, display: "flex", alignItems: "center" }}
+                    >
                       <Security sx={{ mr: 1, color: "#00f5ff" }} /> Security
                     </Typography>
                     <Typography variant="body2" sx={{ mb: 2, opacity: 0.8 }}>
-                      Your wallet is protected with bank-level encryption and 2FA authentication.
+                      Your wallet is protected with bank-level encryption and
+                      2FA authentication.
                     </Typography>
                     <Box display="flex" alignItems="center" sx={{ mb: 1 }}>
-                      <Chip label="Email Verified" size="small" color="success" sx={{ mr: 1 }} />
+                      <Chip
+                        label="Email Verified"
+                        size="small"
+                        color="success"
+                        sx={{ mr: 1 }}
+                      />
                       <Typography variant="body2">Verified</Typography>
                     </Box>
                     <Box display="flex" alignItems="center">
-                      <Chip label="KYC" size="small" color="success" sx={{ mr: 1 }} />
+                      <Chip
+                        label="KYC"
+                        size="small"
+                        color="success"
+                        sx={{ mr: 1 }}
+                      />
                       <Typography variant="body2">Completed</Typography>
                     </Box>
                   </Paper>
@@ -430,9 +518,16 @@ export default function Wallet() {
                   color: "white",
                 }}
               >
-                <Typography variant="h6" sx={{ mb: 3 }}>Recent Transactions</Typography>
+                <Typography variant="h6" sx={{ mb: 3 }}>
+                  Recent Transactions
+                </Typography>
                 {mockTransactions.map((transaction, index) => (
-                  <Slide key={transaction.id} direction="up" in timeout={(index + 1) * 200}>
+                  <Slide
+                    key={transaction.id}
+                    direction="up"
+                    in
+                    timeout={(index + 1) * 200}
+                  >
                     <Box
                       sx={{
                         p: 2,
@@ -443,9 +538,16 @@ export default function Wallet() {
                         "&:hover": { background: "rgba(255,255,255,0.07)" },
                       }}
                     >
-                      <Box display="flex" justifyContent="space-between" alignItems="center">
+                      <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                      >
                         <Box>
-                          <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{ textTransform: "capitalize" }}
+                          >
                             {transaction.type}
                           </Typography>
                           <Typography variant="body2" sx={{ opacity: 0.7 }}>
@@ -456,11 +558,13 @@ export default function Wallet() {
                           <Typography
                             variant="h6"
                             sx={{
-                              color: transaction.amount > 0 ? "#4caf50" : "#f44336",
+                              color:
+                                transaction.amount > 0 ? "#4caf50" : "#f44336",
                               fontWeight: "bold",
                             }}
                           >
-                            {transaction.amount > 0 ? "+" : ""}₹{Math.abs(transaction.amount).toLocaleString()}
+                            {transaction.amount > 0 ? "+" : ""}₹
+                            {Math.abs(transaction.amount).toLocaleString()}
                           </Typography>
                           <Chip
                             label={transaction.status}
@@ -487,12 +591,17 @@ export default function Wallet() {
       {/* Global animation styles */}
       <style jsx global>{`
         @keyframes float {
-          0% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
-          100% { transform: translateY(0) rotate(0deg); }
+          0% {
+            transform: translateY(0) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(5deg);
+          }
+          100% {
+            transform: translateY(0) rotate(0deg);
+          }
         }
       `}</style>
     </Box>
-    
   );
 }

@@ -1,4 +1,3 @@
-// services/matchService.ts
 import CricketMatchRepository from "../repositories/cricketMatchRepo";
 import { ICricketMatch } from "../models/cricketMatchModel";
 
@@ -11,15 +10,22 @@ class CricketMatchService {
     return CricketMatchRepository.getMatchById(id);
   }
 
-  public static async createMatch(matchData: ICricketMatch): Promise<ICricketMatch> {
+  public static async createMatch(
+    matchData: ICricketMatch
+  ): Promise<ICricketMatch> {
     return CricketMatchRepository.createMatch(matchData);
   }
 
-  public static async updateMatch(id: string, updateData: Partial<ICricketMatch>): Promise<ICricketMatch | null> {
+  public static async updateMatch(
+    id: string,
+    updateData: Partial<ICricketMatch>
+  ): Promise<ICricketMatch | null> {
     return CricketMatchRepository.updateMatch(id, updateData);
   }
 
-  public static async deleteMatch(id: string): Promise<{ deletedCount?: number }> {
+  public static async deleteMatch(
+    id: string
+  ): Promise<{ deletedCount?: number }> {
     return CricketMatchRepository.deleteMatch(id);
   }
 }

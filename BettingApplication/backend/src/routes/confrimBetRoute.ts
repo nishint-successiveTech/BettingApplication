@@ -5,7 +5,6 @@ class ConfirmBetRoutes {
   public static allroutes() {
     const router = Router();
 
-    // ✅ Get all matches
     router.post("/create", ConfirmBetController.confirmCreateBet);
     router.post("/winner", ConfirmBetController.winnerDeclare);
 

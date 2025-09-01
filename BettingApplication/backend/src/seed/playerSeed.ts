@@ -1,4 +1,3 @@
-// seed/playerSeed.ts
 import playerModel, { IPlayer } from "../models/playerModel";
 
 const players: Partial<IPlayer>[] = [

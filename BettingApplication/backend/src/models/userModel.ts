@@ -22,12 +22,12 @@ const userSchema = new mongoose.Schema({
   },
   money: {
     type: Number,
-    default: 1000, // Optional: default money amount for new users
+    default: 1000,
   },
-  role:{
-    type:String,
-    default:"User"
-  }
+  role: {
+    type: String,
+    default: "User",
+  },
 });
 
 const userModel = mongoose.model("U", userSchema);

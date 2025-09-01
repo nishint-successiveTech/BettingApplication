@@ -1,7 +1,7 @@
 "use client";
 
-import { gql,} from "@apollo/client";
-import { useSubscription } from "@apollo/client/react"
+import { gql } from "@apollo/client";
+import { useSubscription } from "@apollo/client/react";
 
 // Subscription to listen for withdrawals
 const WITHDRAWAL_SUBSCRIPTION = gql`
@@ -26,10 +26,21 @@ export default function Withdrawals() {
       {error && <p>Error: {error.message}</p>}
 
       {data?.withdrawalOccurred ? (
-        <div style={{ marginTop: 10, padding: 10, border: "1px solid #ccc", borderRadius: 5 }}>
-          <p><strong>Username:</strong> {data.withdrawalOccurred.email}</p>
-          <p><strong>Has Placed :</strong> {data.withdrawalOccurred.withdrawn} Bet Right Now on a cricket match</p>
-          
+        <div
+          style={{
+            marginTop: 10,
+            padding: 10,
+            border: "1px solid #ccc",
+            borderRadius: 5,
+          }}
+        >
+          <p>
+            <strong>Username:</strong> {data.withdrawalOccurred.email}
+          </p>
+          <p>
+            <strong>Has Placed :</strong> {data.withdrawalOccurred.withdrawn}{" "}
+            Bet Right Now on a cricket match
+          </p>
         </div>
       ) : (
         <p>No Bet Placed yet.</p>

@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Typography, Button, Box, Paper, CircularProgress } from "@mui/material";
+import {
+  Typography,
+  Button,
+  Box,
+  Paper,
+  CircularProgress,
+} from "@mui/material";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -16,7 +22,7 @@ export default function HomePage() {
 
     return () => clearTimeout(timer);
   }, []);
-console.log("*********");
+  console.log("*********");
   useEffect(() => {
     if (!isLoading) return; // Only run canvas animation during loading
 
@@ -110,7 +116,8 @@ console.log("*********");
           justifyContent: "center",
           position: "relative",
           overflow: "hidden",
-          background: "radial-gradient(circle at top, #0f2027, #203a43, #2c5364)",
+          background:
+            "radial-gradient(circle at top, #0f2027, #203a43, #2c5364)",
           flexDirection: "column",
         }}
       >
@@ -270,7 +277,8 @@ console.log("*********");
             textShadow: "0 0 12px rgba(255,255,255,0.4)",
           }}
         >
-          The next-gen platform for real-time betting, analytics & instant wins ⚡
+          The next-gen platform for real-time betting, analytics & instant wins
+          ⚡
         </Typography>
 
         {/* Action Buttons */}
@@ -369,10 +377,3 @@ console.log("*********");
     </Box>
   );
 }
-
-
-
-
-
-
-

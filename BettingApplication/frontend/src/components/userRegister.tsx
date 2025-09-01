@@ -43,8 +43,25 @@ export default function UserForm() {
         setPassword("");
 
         // 🎉 Success message with bonus coins
-        setSuccess("✅ Hurray! You got 1000 coins on registration 🎉");
+        setSuccess(
+          "✅ Hurray! You got 1000 coins on registration 🎉 Please Check your Email"
+        );
         setTimeout(() => setSuccess(null), 4000); // hide after 4 seconds
+
+        try {
+          await fetch("http://localhost:8787/api/email/sendEmail", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: data.createUser.email, // use actual returned email
+              name: data.createUser.name, // use actual returned name
+            }),
+          });
+        } catch (emailErr) {
+          console.error("Error sending email:", emailErr);
+        }
 
         // Redirect to login after 1 second
         setTimeout(() => {
@@ -225,11 +242,14 @@ export default function UserForm() {
               },
             }}
           >
-            {loading ? <CircularProgress size={24} color="inherit" /> : "Register"}
+            {loading ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              "Register"
+            )}
           </Button>
         </Box>
       </Paper>
     </Box>
   );
 }
-

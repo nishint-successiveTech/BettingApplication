@@ -1,7 +1,7 @@
 "use client";
 
 import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react"
+import { useQuery } from "@apollo/client/react";
 import { Box, Paper, Typography, CircularProgress, Alert } from "@mui/material";
 
 interface HelloProps {

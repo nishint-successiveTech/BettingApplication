@@ -24,7 +24,9 @@ class EmailService {
       to,
       subject: "Welcome to Betting Bazzi!",
       html: `<h1>Welcome ${name || ""}!</h1>
-             <p>Thank you for joining Betting Bazzi. We're excited to have you on board!</p>`,
+             <p>Thank you for joining Betting Bazzi. We're excited to have you on board!</p>
+             <p> Congrats you get 1000 Rs as registration bonus`,
+             
     };
 
     try {

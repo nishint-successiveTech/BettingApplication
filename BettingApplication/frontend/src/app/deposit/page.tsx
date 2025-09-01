@@ -9,7 +9,7 @@ export default function DepositPage() {
   return (
     <ApolloProvider client={client}>
       <Container maxWidth="sm" sx={{ mt: 5 }}>
-      <DepositForm />
+        <DepositForm />
       </Container>
     </ApolloProvider>
   );

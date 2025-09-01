@@ -241,7 +241,6 @@
 
 // export default CricketMatches;
 
-
 // // "use client";
 
 // // import React, { useState, useMemo } from "react";
@@ -556,7 +555,6 @@
 
 // // export default CricketMatches;
 
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -648,7 +646,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: 10,
     top: 10,
-  
+
     border: `2px solid ${theme.palette.background.default}`,
 
     padding: "0 4px",
@@ -684,7 +682,8 @@ const MatchSkeleton = () => (
           left: 0,
           right: 0,
           height: "1px",
-          background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
+          background:
+            "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
         },
         mb: 2.5,
       }}
@@ -693,19 +692,57 @@ const MatchSkeleton = () => (
         <ShimmerBox sx={{ width: "40%", height: 16, borderRadius: 1 }} />
         <ShimmerBox sx={{ width: 80, height: 24, borderRadius: 16 }} />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2.5 }}>
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "40%" }}>
-          <ShimmerBox sx={{ width: 60, height: 60, borderRadius: "50%", mb: 1.5 }} />
-          <ShimmerBox sx={{ width: "80%", height: 14, borderRadius: 1, mb: 1 }} />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 2.5,
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "40%",
+          }}
+        >
+          <ShimmerBox
+            sx={{ width: 60, height: 60, borderRadius: "50%", mb: 1.5 }}
+          />
+          <ShimmerBox
+            sx={{ width: "80%", height: 14, borderRadius: 1, mb: 1 }}
+          />
           <ShimmerBox sx={{ width: 30, height: 20, borderRadius: 1 }} />
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "20%" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "20%",
+          }}
+        >
           <ShimmerBox sx={{ width: 30, height: 14, borderRadius: 1 }} />
-          <ShimmerBox sx={{ width: 60, height: 24, borderRadius: 16, mt: 1.5 }} />
+          <ShimmerBox
+            sx={{ width: 60, height: 24, borderRadius: 16, mt: 1.5 }}
+          />
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "40%" }}>
-          <ShimmerBox sx={{ width: 60, height: 60, borderRadius: "50%", mb: 1.5 }} />
-          <ShimmerBox sx={{ width: "80%", height: 14, borderRadius: 1, mb: 1 }} />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "40%",
+          }}
+        >
+          <ShimmerBox
+            sx={{ width: 60, height: 60, borderRadius: "50%", mb: 1.5 }}
+          />
+          <ShimmerBox
+            sx={{ width: "80%", height: 14, borderRadius: 1, mb: 1 }}
+          />
           <ShimmerBox sx={{ width: 30, height: 20, borderRadius: 1 }} />
         </Box>
       </Box>
@@ -720,16 +757,24 @@ const MatchSkeleton = () => (
 const formatMatchDate = (dateString: string) => {
   const date = new Date(dateString);
   return {
-    date: date.toLocaleDateString("en-US", { weekday: "short", day: "numeric", month: "short" }),
-    time: date.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true }),
-    full: date.toLocaleString("en-US", { 
-      weekday: "long", 
-      day: "numeric", 
-      month: "long", 
-      year: "numeric", 
-      hour: "2-digit", 
-      minute: "2-digit", 
-      hour12: true 
+    date: date.toLocaleDateString("en-US", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+    }),
+    time: date.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    }),
+    full: date.toLocaleString("en-US", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
     }),
   };
 };
@@ -757,8 +802,13 @@ const categorizeMatches = (matches: any[]) => {
 };
 
 // Match Card
-const MatchCard = ({ match, onClick, isFavorite, onToggleFavorite }: { 
-  match: any; 
+const MatchCard = ({
+  match,
+  onClick,
+  isFavorite,
+  onToggleFavorite,
+}: {
+  match: any;
   onClick: () => void;
   isFavorite: boolean;
   onToggleFavorite: (matchId: string) => void;
@@ -766,8 +816,9 @@ const MatchCard = ({ match, onClick, isFavorite, onToggleFavorite }: {
   const theme = useTheme();
   const formattedDate = formatMatchDate(match.dateTimeGMT);
   const isLive = match.status.toLowerCase().includes("live");
-  const isCompleted = match.status.toLowerCase().includes("complete") || 
-                     match.status.toLowerCase().includes("finished");
+  const isCompleted =
+    match.status.toLowerCase().includes("complete") ||
+    match.status.toLowerCase().includes("finished");
 
   return (
     <Zoom in timeout={600}>
@@ -778,10 +829,10 @@ const MatchCard = ({ match, onClick, isFavorite, onToggleFavorite }: {
           borderRadius: "16px",
           background: "linear-gradient(145deg, #1a1c29, #222636)",
           border: "1px solid",
-          borderColor: isLive 
-            ? alpha(theme.palette.success.main, 0.3) 
-            : isCompleted 
-            ? alpha(theme.palette.secondary.main, 0.3) 
+          borderColor: isLive
+            ? alpha(theme.palette.success.main, 0.3)
+            : isCompleted
+            ? alpha(theme.palette.secondary.main, 0.3)
             : alpha(theme.palette.primary.main, 0.2),
           cursor: "pointer",
           position: "relative",
@@ -794,33 +845,41 @@ const MatchCard = ({ match, onClick, isFavorite, onToggleFavorite }: {
             left: 0,
             right: 0,
             height: "1px",
-            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
           },
-          "&:after": isLive ? {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: `linear-gradient(45deg, ${alpha(theme.palette.success.main, 0.05)} 0%, transparent 70%)`,
-            pointerEvents: "none",
-          } : {},
+          "&:after": isLive
+            ? {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: `linear-gradient(45deg, ${alpha(
+                  theme.palette.success.main,
+                  0.05
+                )} 0%, transparent 70%)`,
+                pointerEvents: "none",
+              }
+            : {},
         }}
       >
         {/* Favorite Button */}
-        <IconButton 
-          sx={{ 
-            position: "absolute", 
-            top: 8, 
-            right: 8, 
+        <IconButton
+          sx={{
+            position: "absolute",
+            top: 8,
+            right: 8,
             zIndex: 10,
-            color: isFavorite ? theme.palette.warning.main : "rgba(255,255,255,0.5)",
+            color: isFavorite
+              ? theme.palette.warning.main
+              : "rgba(255,255,255,0.5)",
             animation: isFavorite ? `${float} 3s ease-in-out infinite` : "none",
             "&:hover": {
               color: theme.palette.warning.main,
-              background: alpha(theme.palette.warning.main, 0.1)
-            }
+              background: alpha(theme.palette.warning.main, 0.1),
+            },
           }}
           onClick={(e) => {
             e.stopPropagation();
@@ -832,37 +891,59 @@ const MatchCard = ({ match, onClick, isFavorite, onToggleFavorite }: {
 
         {/* Match Series Info */}
         {match.matchType && (
-          <Box sx={{ 
-            display: "flex", 
-            justifyContent: "center", 
-            mb: 2,
-            background: alpha(theme.palette.primary.main, 0.1),
-            py: 0.5,
-            borderRadius: "12px",
-            border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`
-          }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mb: 2,
+              background: alpha(theme.palette.primary.main, 0.1),
+              py: 0.5,
+              borderRadius: "12px",
+              border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
+            }}
+          >
             <EmojiEvents sx={{ fontSize: 16, mr: 1, color: "primary.main" }} />
-            <Typography variant="caption" sx={{ color: "primary.main", fontWeight: 600 }}>
+            <Typography
+              variant="caption"
+              sx={{ color: "primary.main", fontWeight: 600 }}
+            >
               {match.matchType}
             </Typography>
           </Box>
         )}
 
         {/* Teams Section */}
-        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
-          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "40%" }}>
-            <Avatar 
-              src={match.t1img} 
-              alt={match.t1} 
-              sx={{ 
-                width: 70, 
-                height: 70, 
-                border: "2px solid", 
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 2,
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "40%",
+            }}
+          >
+            <Avatar
+              src={match.t1img}
+              alt={match.t1}
+              sx={{
+                width: 70,
+                height: 70,
+                border: "2px solid",
                 borderColor: alpha(theme.palette.primary.main, 0.3),
-                mb: 1
-              }} 
+                mb: 1,
+              }}
             />
-            <Typography variant="body1" sx={{ fontWeight: 600, textAlign: "center" }}>
+            <Typography
+              variant="body1"
+              sx={{ fontWeight: 600, textAlign: "center" }}
+            >
               {match.t1}
             </Typography>
             {match.t1s && (
@@ -872,41 +953,62 @@ const MatchCard = ({ match, onClick, isFavorite, onToggleFavorite }: {
             )}
           </Box>
 
-          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "20%" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "20%",
+            }}
+          >
             <Typography variant="caption" sx={{ color: "text.secondary" }}>
               VS
             </Typography>
             {isLive ? (
-              <Chip 
-                icon={<LiveTv />} 
-                label="LIVE" 
-                color="error" 
-                size="small" 
-                sx={{ mt: 1, fontWeight: 700, animation: `${pulse} 2s infinite` }} 
+              <Chip
+                icon={<LiveTv />}
+                label="LIVE"
+                color="error"
+                size="small"
+                sx={{
+                  mt: 1,
+                  fontWeight: 700,
+                  animation: `${pulse} 2s infinite`,
+                }}
               />
             ) : (
-              <Chip 
-                label={isCompleted ? "COMPLETED" : "UPCOMING"} 
-                color={isCompleted ? "secondary" : "primary"} 
-                size="small" 
-                sx={{ mt: 1, fontWeight: 700 }} 
+              <Chip
+                label={isCompleted ? "COMPLETED" : "UPCOMING"}
+                color={isCompleted ? "secondary" : "primary"}
+                size="small"
+                sx={{ mt: 1, fontWeight: 700 }}
               />
             )}
           </Box>
 
-          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "40%" }}>
-            <Avatar 
-              src={match.t2img} 
-              alt={match.t2} 
-              sx={{ 
-                width: 70, 
-                height: 70, 
-                border: "2px solid", 
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "40%",
+            }}
+          >
+            <Avatar
+              src={match.t2img}
+              alt={match.t2}
+              sx={{
+                width: 70,
+                height: 70,
+                border: "2px solid",
                 borderColor: alpha(theme.palette.secondary.main, 0.3),
-                mb: 1
-              }} 
+                mb: 1,
+              }}
             />
-            <Typography variant="body1" sx={{ fontWeight: 600, textAlign: "center" }}>
+            <Typography
+              variant="body1"
+              sx={{ fontWeight: 600, textAlign: "center" }}
+            >
               {match.t2}
             </Typography>
             {match.t2s && (
@@ -918,35 +1020,51 @@ const MatchCard = ({ match, onClick, isFavorite, onToggleFavorite }: {
         </Box>
 
         {/* Match Status/Time */}
-        <Box 
+        <Box
           onClick={onClick}
-          sx={{ 
-            display: "flex", 
-            justifyContent: "center", 
-            alignItems: "center", 
-            background: alpha(theme.palette.primary.main, 0.1), 
-            py: 1, 
-            borderRadius: "8px", 
-            border: "1px solid", 
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: alpha(theme.palette.primary.main, 0.1),
+            py: 1,
+            borderRadius: "8px",
+            border: "1px solid",
             borderColor: alpha(theme.palette.primary.main, 0.2),
             transition: "all 0.2s ease",
             "&:hover": {
               background: alpha(theme.palette.primary.main, 0.2),
-            }
+            },
           }}
         >
           <Schedule sx={{ fontSize: 16, mr: 1, color: "primary.main" }} />
           <Tooltip title={formattedDate.full}>
-            <Typography variant="caption" sx={{ color: "primary.main", fontWeight: 500 }}>
-              {isLive ? "LIVE NOW" : isCompleted ? "COMPLETED" : `Starts: ${formattedDate.date} • ${formattedDate.time}`}
+            <Typography
+              variant="caption"
+              sx={{ color: "primary.main", fontWeight: 500 }}
+            >
+              {isLive
+                ? "LIVE NOW"
+                : isCompleted
+                ? "COMPLETED"
+                : `Starts: ${formattedDate.date} • ${formattedDate.time}`}
             </Typography>
           </Tooltip>
         </Box>
 
         {/* Match Venue */}
         {match.venue && (
-          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 1 }}>
-            <LocationOn sx={{ fontSize: 14, mr: 0.5, color: "text.secondary" }} />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              mt: 1,
+            }}
+          >
+            <LocationOn
+              sx={{ fontSize: 14, mr: 0.5, color: "text.secondary" }}
+            />
             <Typography variant="caption" sx={{ color: "text.secondary" }}>
               {match.venue}
             </Typography>
@@ -955,19 +1073,19 @@ const MatchCard = ({ match, onClick, isFavorite, onToggleFavorite }: {
 
         {/* Additional Info */}
         <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
-          <Button 
-            variant="outlined" 
-            size="small" 
+          <Button
+            variant="outlined"
+            size="small"
             onClick={onClick}
-            sx={{ 
-              borderRadius: "20px", 
+            sx={{
+              borderRadius: "20px",
               textTransform: "none",
-              fontSize: "0.75rem"
+              fontSize: "0.75rem",
             }}
           >
-            BET NOW 
+            BET NOW
           </Button>
-          
+
           <Tooltip title="Set notification">
             <IconButton size="small">
               <NotificationsNone sx={{ fontSize: 20 }} />
@@ -988,10 +1106,16 @@ const CricketMatches: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [sortAnchorEl, setSortAnchorEl] = useState<null | HTMLElement>(null);
-  const [filterAnchorEl, setFilterAnchorEl] = useState<null | HTMLElement>(null);
+  const [filterAnchorEl, setFilterAnchorEl] = useState<null | HTMLElement>(
+    null
+  );
   const [sortBy, setSortBy] = useState("date");
-  const [notification, setNotification] = useState({ open: false, message: "", type: "success" });
-  const { loading, error, data, refetch } = useQuery(GET_CRICKET_MATCHES, { 
+  const [notification, setNotification] = useState({
+    open: false,
+    message: "",
+    type: "success",
+  });
+  const { loading, error, data, refetch } = useQuery(GET_CRICKET_MATCHES, {
     fetchPolicy: "cache-and-network",
     pollInterval: 30000, // Auto-refresh every 30 seconds
   });
@@ -1011,22 +1135,39 @@ const CricketMatches: React.FC = () => {
 
   const handleRefresh = async () => {
     setRefreshing(true);
-    try { 
-      await refetch(); 
-      setNotification({ open: true, message: "Matches refreshed successfully", type: "success" });
+    try {
+      await refetch();
+      setNotification({
+        open: true,
+        message: "Matches refreshed successfully",
+        type: "success",
+      });
     } catch (err) {
-      setNotification({ open: true, message: "Error refreshing matches", type: "error" });
+      setNotification({
+        open: true,
+        message: "Error refreshing matches",
+        type: "error",
+      });
+    } finally {
+      setTimeout(() => setRefreshing(false), 800);
     }
-    finally { setTimeout(() => setRefreshing(false), 800); }
   };
 
   const handleToggleFavorite = (matchId: string) => {
     if (favorites.includes(matchId)) {
-      setFavorites(favorites.filter(id => id !== matchId));
-      setNotification({ open: true, message: "Removed from favorites", type: "info" });
+      setFavorites(favorites.filter((id) => id !== matchId));
+      setNotification({
+        open: true,
+        message: "Removed from favorites",
+        type: "info",
+      });
     } else {
       setFavorites([...favorites, matchId]);
-      setNotification({ open: true, message: "Added to favorites", type: "success" });
+      setNotification({
+        open: true,
+        message: "Added to favorites",
+        type: "success",
+      });
     }
   };
 
@@ -1059,23 +1200,30 @@ const CricketMatches: React.FC = () => {
     // Filter by search query
     let filteredMatches = matches;
     if (searchQuery) {
-      filteredMatches = matches.filter(match => 
-        match.t1.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        match.t2.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (match.matchType && match.matchType.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (match.venue && match.venue.toLowerCase().includes(searchQuery.toLowerCase()))
+      filteredMatches = matches.filter(
+        (match) =>
+          match.t1.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          match.t2.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (match.matchType &&
+            match.matchType
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase())) ||
+          (match.venue &&
+            match.venue.toLowerCase().includes(searchQuery.toLowerCase()))
       );
     }
 
     // Sort matches
     filteredMatches = [...filteredMatches].sort((a, b) => {
       if (sortBy === "date") {
-        return new Date(a.dateTimeGMT).getTime() - new Date(b.dateTimeGMT).getTime();
+        return (
+          new Date(a.dateTimeGMT).getTime() - new Date(b.dateTimeGMT).getTime()
+        );
       } else if (sortBy === "popularity") {
         // This would require actual popularity data, using favorites as a proxy
         const aIsFavorite = favorites.includes(a.id);
         const bIsFavorite = favorites.includes(b.id);
-        return (aIsFavorite === bIsFavorite) ? 0 : aIsFavorite ? -1 : 1;
+        return aIsFavorite === bIsFavorite ? 0 : aIsFavorite ? -1 : 1;
       }
       return 0;
     });
@@ -1083,59 +1231,79 @@ const CricketMatches: React.FC = () => {
     return filteredMatches;
   };
 
-  const categorizedMatches = data?.cricketMatches 
-    ? categorizeMatches(processMatches(data.cricketMatches)) 
+  const categorizedMatches = data?.cricketMatches
+    ? categorizeMatches(processMatches(data.cricketMatches))
     : { live: [], upcoming: [], completed: [] };
 
   return (
     <>
       {/* Full-screen background */}
-      <Box sx={{ 
-        position: "fixed", 
-        top: 0, 
-        left: 0, 
-        right: 0, 
-        bottom: 0, 
-        background: "radial-gradient(circle at top, #0f2027, #203a43, #2c5364)", 
-        zIndex: -1 
-      }} />
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background:
+            "radial-gradient(circle at top, #0f2027, #203a43, #2c5364)",
+          zIndex: -1,
+        }}
+      />
 
       {/* Animated background elements */}
-      <Box sx={{ 
-        position: "fixed", 
-        top: 0, 
-        left: 0, 
-        right: 0, 
-        bottom: 0, 
-        background: "url('/cricket-pattern.png')", 
-        opacity: 0.03,
-        zIndex: -1,
-        pointerEvents: "none"
-      }} />
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "url('/cricket-pattern.png')",
+          opacity: 0.03,
+          zIndex: -1,
+          pointerEvents: "none",
+        }}
+      />
 
       {/* Page content */}
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1, p: 3, minHeight: "100vh" }}>
+      <Container
+        maxWidth="xl"
+        sx={{ position: "relative", zIndex: 1, p: 3, minHeight: "100vh" }}
+      >
         {/* Header */}
-        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 4,
+          }}
+        >
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-            <SportsCricket sx={{ 
-              fontSize: 32, 
-              color: "primary.main",
-              animation: `${float} 3s ease-in-out infinite`
-            }} />
-            <Typography variant="h4" sx={{ 
-              fontWeight: 800, 
-              color: "white",
-              background: "linear-gradient(45deg, #fff, #42a5f5)",
-              backgroundClip: "text",
-              textFillColor: "transparent",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
+            <SportsCricket
+              sx={{
+                fontSize: 32,
+                color: "primary.main",
+                animation: `${float} 3s ease-in-out infinite`,
+              }}
+            />
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: 800,
+                color: "white",
+                background: "linear-gradient(45deg, #fff, #42a5f5)",
+                backgroundClip: "text",
+                textFillColor: "transparent",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
               Cricket Hub
             </Typography>
           </Box>
-          
+
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <TextField
               placeholder="Search matches..."
@@ -1163,31 +1331,45 @@ const CricketMatches: React.FC = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Search sx={{ color: alpha(theme.palette.common.white, 0.7) }} />
+                    <Search
+                      sx={{ color: alpha(theme.palette.common.white, 0.7) }}
+                    />
                   </InputAdornment>
                 ),
               }}
             />
-            
+
             <Tooltip title="Sort matches">
-              <IconButton onClick={handleSortOpen} sx={{ color: "primary.main" }}>
+              <IconButton
+                onClick={handleSortOpen}
+                sx={{ color: "primary.main" }}
+              >
                 <Sort />
               </IconButton>
             </Tooltip>
-            
+
             <Tooltip title="Filter matches">
-              <IconButton onClick={handleFilterOpen} sx={{ color: "primary.main" }}>
+              <IconButton
+                onClick={handleFilterOpen}
+                sx={{ color: "primary.main" }}
+              >
                 <FilterList />
               </IconButton>
             </Tooltip>
-            
+
             <Tooltip title="Refresh matches">
-              <IconButton onClick={handleRefresh} disabled={refreshing} sx={{ color: "primary.main" }}>
-                <Refresh sx={{ 
-                  fontSize: 28, 
-                  transition: "transform 0.5s",
-                  transform: refreshing ? "rotate(360deg)" : "rotate(0deg)",
-                }} />
+              <IconButton
+                onClick={handleRefresh}
+                disabled={refreshing}
+                sx={{ color: "primary.main" }}
+              >
+                <Refresh
+                  sx={{
+                    fontSize: 28,
+                    transition: "transform 0.5s",
+                    transform: refreshing ? "rotate(360deg)" : "rotate(0deg)",
+                  }}
+                />
               </IconButton>
             </Tooltip>
           </Box>
@@ -1196,62 +1378,62 @@ const CricketMatches: React.FC = () => {
         {/* Stats Overview */}
         <Slide direction="down" in timeout={800}>
           <Box sx={{ display: "flex", gap: 2, mb: 4, flexWrap: "wrap" }}>
-            <Card sx={{ 
-              background: "linear-gradient(45deg, #2196f3, #1976d2)", 
-              color: "white", 
-              flex: 1,
-              minWidth: 200,
-              borderRadius: "12px"
-            }}>
+            <Card
+              sx={{
+                background: "linear-gradient(45deg, #2196f3, #1976d2)",
+                color: "white",
+                flex: 1,
+                minWidth: 200,
+                borderRadius: "12px",
+              }}
+            >
               <CardContent sx={{ display: "flex", alignItems: "center" }}>
                 <LiveTv sx={{ fontSize: 40, mr: 2 }} />
                 <Box>
                   <Typography variant="h4" fontWeight="bold">
                     {categorizedMatches.live.length}
                   </Typography>
-                  <Typography variant="body2">
-                    Live Matches
-                  </Typography>
+                  <Typography variant="body2">Live Matches</Typography>
                 </Box>
               </CardContent>
             </Card>
-            
-            <Card sx={{ 
-              background: "linear-gradient(45deg, #4caf50, #2e7d32)", 
-              color: "white", 
-              flex: 1,
-              minWidth: 200,
-              borderRadius: "12px"
-            }}>
+
+            <Card
+              sx={{
+                background: "linear-gradient(45deg, #4caf50, #2e7d32)",
+                color: "white",
+                flex: 1,
+                minWidth: 200,
+                borderRadius: "12px",
+              }}
+            >
               <CardContent sx={{ display: "flex", alignItems: "center" }}>
                 <Upcoming sx={{ fontSize: 40, mr: 2 }} />
                 <Box>
                   <Typography variant="h4" fontWeight="bold">
                     {categorizedMatches.upcoming.length}
                   </Typography>
-                  <Typography variant="body2">
-                    Upcoming Matches
-                  </Typography>
+                  <Typography variant="body2">Upcoming Matches</Typography>
                 </Box>
               </CardContent>
             </Card>
-            
-            <Card sx={{ 
-              background: "linear-gradient(45deg, #9e9e9e, #616161)", 
-              color: "white", 
-              flex: 1,
-              minWidth: 200,
-              borderRadius: "12px"
-            }}>
+
+            <Card
+              sx={{
+                background: "linear-gradient(45deg, #9e9e9e, #616161)",
+                color: "white",
+                flex: 1,
+                minWidth: 200,
+                borderRadius: "12px",
+              }}
+            >
               <CardContent sx={{ display: "flex", alignItems: "center" }}>
                 <DoneAll sx={{ fontSize: 40, mr: 2 }} />
                 <Box>
                   <Typography variant="h4" fontWeight="bold">
                     {categorizedMatches.completed.length}
                   </Typography>
-                  <Typography variant="body2">
-                    Completed Matches
-                  </Typography>
+                  <Typography variant="body2">Completed Matches</Typography>
                 </Box>
               </CardContent>
             </Card>
@@ -1259,16 +1441,18 @@ const CricketMatches: React.FC = () => {
         </Slide>
 
         {/* Tabs */}
-        <Paper sx={{ 
-          mb: 4, 
-          background: alpha(theme.palette.background.paper, 0.1),
-          backdropFilter: "blur(10px)",
-          borderRadius: "12px",
-          overflow: "hidden"
-        }}>
-          <Tabs 
-            value={activeTab} 
-            onChange={(e, v) => setActiveTab(v)} 
+        <Paper
+          sx={{
+            mb: 4,
+            background: alpha(theme.palette.background.paper, 0.1),
+            backdropFilter: "blur(10px)",
+            borderRadius: "12px",
+            overflow: "hidden",
+          }}
+        >
+          <Tabs
+            value={activeTab}
+            onChange={(e, v) => setActiveTab(v)}
             variant="fullWidth"
             textColor="primary"
             indicatorColor="primary"
@@ -1284,26 +1468,41 @@ const CricketMatches: React.FC = () => {
               },
             }}
           >
-            <Tab 
-              icon={<StyledBadge badgeContent={categorizedMatches.live.length} color="error">
-                <LiveTv />
-              </StyledBadge>} 
-              iconPosition="start" 
-              label="Live Matches" 
+            <Tab
+              icon={
+                <StyledBadge
+                  badgeContent={categorizedMatches.live.length}
+                  color="error"
+                >
+                  <LiveTv />
+                </StyledBadge>
+              }
+              iconPosition="start"
+              label="Live Matches"
             />
-            <Tab 
-              icon={<StyledBadge badgeContent={categorizedMatches.upcoming.length} color="primary">
-                <Upcoming />
-              </StyledBadge>} 
-              iconPosition="start" 
-              label="Upcoming Matches" 
+            <Tab
+              icon={
+                <StyledBadge
+                  badgeContent={categorizedMatches.upcoming.length}
+                  color="primary"
+                >
+                  <Upcoming />
+                </StyledBadge>
+              }
+              iconPosition="start"
+              label="Upcoming Matches"
             />
-            <Tab 
-              icon={<StyledBadge badgeContent={categorizedMatches.completed.length} color="secondary">
-                <DoneAll />
-              </StyledBadge>} 
-              iconPosition="start" 
-              label="Completed Matches" 
+            <Tab
+              icon={
+                <StyledBadge
+                  badgeContent={categorizedMatches.completed.length}
+                  color="secondary"
+                >
+                  <DoneAll />
+                </StyledBadge>
+              }
+              iconPosition="start"
+              label="Completed Matches"
             />
           </Tabs>
         </Paper>
@@ -1318,22 +1517,24 @@ const CricketMatches: React.FC = () => {
             ))}
           </Grid>
         ) : error ? (
-          <Box sx={{ 
-            display: "flex", 
-            flexDirection: "column", 
-            alignItems: "center", 
-            justifyContent: "center", 
-            py: 10,
-            textAlign: "center"
-          }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              py: 10,
+              textAlign: "center",
+            }}
+          >
             <Typography variant="h6" color="error" gutterBottom>
               Failed to load matches
             </Typography>
             <Typography variant="body2" sx={{ color: "text.secondary", mb: 2 }}>
               {error.message}
             </Typography>
-            <Button 
-              variant="contained" 
+            <Button
+              variant="contained"
               onClick={handleRefresh}
               startIcon={<Refresh />}
             >
@@ -1343,72 +1544,103 @@ const CricketMatches: React.FC = () => {
         ) : (
           <Box>
             {activeTab === 0 && categorizedMatches.live.length === 0 && (
-              <Box sx={{ 
-                display: "flex", 
-                flexDirection: "column", 
-                alignItems: "center", 
-                justifyContent: "center", 
-                py: 10,
-                textAlign: "center"
-              }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  py: 10,
+                  textAlign: "center",
+                }}
+              >
                 <LiveTv sx={{ fontSize: 60, color: "text.secondary", mb: 2 }} />
-                <Typography variant="h6" sx={{ color: "text.secondary" }} gutterBottom>
+                <Typography
+                  variant="h6"
+                  sx={{ color: "text.secondary" }}
+                  gutterBottom
+                >
                   No live matches right now
                 </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary", mb: 3 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "text.secondary", mb: 3 }}
+                >
                   Check back later for live cricket action
                 </Typography>
               </Box>
             )}
-            
+
             {activeTab === 1 && categorizedMatches.upcoming.length === 0 && (
-              <Box sx={{ 
-                display: "flex", 
-                flexDirection: "column", 
-                alignItems: "center", 
-                justifyContent: "center", 
-                py: 10,
-                textAlign: "center"
-              }}>
-                <Upcoming sx={{ fontSize: 60, color: "text.secondary", mb: 2 }} />
-                <Typography variant="h6" sx={{ color: "text.secondary" }} gutterBottom>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  py: 10,
+                  textAlign: "center",
+                }}
+              >
+                <Upcoming
+                  sx={{ fontSize: 60, color: "text.secondary", mb: 2 }}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{ color: "text.secondary" }}
+                  gutterBottom
+                >
                   No upcoming matches scheduled
                 </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary", mb: 3 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "text.secondary", mb: 3 }}
+                >
                   New matches will appear here when scheduled
                 </Typography>
               </Box>
             )}
-            
+
             {activeTab === 2 && categorizedMatches.completed.length === 0 && (
-              <Box sx={{ 
-                display: "flex", 
-                flexDirection: "column", 
-                alignItems: "center", 
-                justifyContent: "center", 
-                py: 10,
-                textAlign: "center"
-              }}>
-                <DoneAll sx={{ fontSize: 60, color: "text.secondary", mb: 2 }} />
-                <Typography variant="h6" sx={{ color: "text.secondary" }} gutterBottom>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  py: 10,
+                  textAlign: "center",
+                }}
+              >
+                <DoneAll
+                  sx={{ fontSize: 60, color: "text.secondary", mb: 2 }}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{ color: "text.secondary" }}
+                  gutterBottom
+                >
                   No completed matches
                 </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary", mb: 3 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "text.secondary", mb: 3 }}
+                >
                   Completed matches will appear here
                 </Typography>
               </Box>
             )}
-            
+
             <Grid container spacing={3}>
-              {(activeTab === 0 
-                ? categorizedMatches.live 
-                : activeTab === 1 
-                ? categorizedMatches.upcoming 
+              {(activeTab === 0
+                ? categorizedMatches.live
+                : activeTab === 1
+                ? categorizedMatches.upcoming
                 : categorizedMatches.completed
               ).map((match: any) => (
                 <Grid item xs={12} md={6} lg={4} key={match.id}>
-                  <MatchCard 
-                    match={match} 
+                  <MatchCard
+                    match={match}
                     onClick={() => router.push(`/betWhich?matchId=${match.id}`)}
                     isFavorite={favorites.includes(match.id)}
                     onToggleFavorite={handleToggleFavorite}
@@ -1430,10 +1662,10 @@ const CricketMatches: React.FC = () => {
               mt: 1,
               borderRadius: "12px",
               minWidth: 200,
-            }
+            },
           }}
         >
-          <MenuItem 
+          <MenuItem
             onClick={() => handleSortSelect("date")}
             selected={sortBy === "date"}
           >
@@ -1442,7 +1674,7 @@ const CricketMatches: React.FC = () => {
             </ListItemIcon>
             <ListItemText>Sort by Date</ListItemText>
           </MenuItem>
-          <MenuItem 
+          <MenuItem
             onClick={() => handleSortSelect("popularity")}
             selected={sortBy === "popularity"}
           >
@@ -1464,7 +1696,7 @@ const CricketMatches: React.FC = () => {
               mt: 1,
               borderRadius: "12px",
               minWidth: 200,
-            }
+            },
           }}
         >
           <MenuItem onClick={handleFilterClose}>
@@ -1492,9 +1724,9 @@ const CricketMatches: React.FC = () => {
           onClose={handleCloseNotification}
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         >
-          <Alert 
-            onClose={handleCloseNotification} 
-            severity={notification.type as any} 
+          <Alert
+            onClose={handleCloseNotification}
+            severity={notification.type as any}
             sx={{ width: "100%" }}
           >
             {notification.message}
@@ -1506,4 +1738,3 @@ const CricketMatches: React.FC = () => {
 };
 
 export default CricketMatches;
-

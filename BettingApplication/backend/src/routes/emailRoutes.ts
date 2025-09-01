@@ -5,7 +5,6 @@ class EmailRoutes {
   public static allroutes() {
     const router = Router();
 
-    // ✅ Send a welcome email
     router.post("/sendEmail", EmailController.sendWelcomeEmail);
 
     return router;
