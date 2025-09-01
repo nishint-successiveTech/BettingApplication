@@ -15,10 +15,8 @@ export async function createServer(): Promise<http.Server> {
   const httpServer = http.createServer(app);
   const pubsub = new PubSub();
 
-  // Combine typeDefs & resolvers
   const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-  // Apollo server
   const server = new ApolloServer({
     schema,
     context: () => ({ pubsub }),
@@ -27,7 +25,6 @@ export async function createServer(): Promise<http.Server> {
   await server.start();
   server.applyMiddleware({ app, path: "/graphql" });
 
-  // Subscriptions
   const wsServer = new WebSocketServer({
     server: httpServer,
     path: "/graphql",

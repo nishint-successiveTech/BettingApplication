@@ -1,9 +1,6 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
-  # -------------------------------
-  # User type
-  # -------------------------------
   type User {
     id: ID!
     name: String!
@@ -19,15 +16,11 @@ export const typeDefs = gql`
     withdrawn: Int
   }
 
-  # Auth payload for login
   type AuthPayload {
     token: String!
     user: User!
   }
 
-  # -------------------------------
-  # REST Match type
-  # -------------------------------
   type Match {
     id: String!
     teamA: String!
@@ -38,9 +31,6 @@ export const typeDefs = gql`
     startTime: String
   }
 
-  # -------------------------------
-  # Player type
-  # -------------------------------
   type Player {
     id: ID!
     name: String!
@@ -49,9 +39,6 @@ export const typeDefs = gql`
     odds: Float!
   }
 
-  # -------------------------------
-  # Cricket Match type
-  # -------------------------------
   type CricketMatch {
     id: String!
     dateTimeGMT: String!
@@ -67,7 +54,6 @@ export const typeDefs = gql`
     series: String!
   }
 
-  # Delete response type
   type DeleteResponse {
     message: String!
   }
@@ -77,9 +63,6 @@ export const typeDefs = gql`
     money: Int!
   }
 
-  # -------------------------------
-  # NEW: Bet type
-  # -------------------------------
   type Bet {
     id: ID!
     userEmail: String!
@@ -89,28 +72,18 @@ export const typeDefs = gql`
     createdAt: String!
   }
 
-  # -------------------------------
-  # Queries
-  # -------------------------------
   type Query {
-    # REST Matches
     matches: [Match]
     match(id: String!): Match
 
-    # Players
     players: [Player]
 
-    # Cricket Matches
     cricketMatches: [CricketMatch!]!
     cricketMatch(id: String!): CricketMatch
 
-    # User Money Query
     getUserMoney(email: String!): UserMoney!
   }
 
-  # -------------------------------
-  # Input types
-  # -------------------------------
   input UpdateCricketMatchInput {
     dateTimeGMT: String
     matchType: String
@@ -125,11 +98,7 @@ export const typeDefs = gql`
     series: String
   }
 
-  # -------------------------------
-  # Mutations
-  # -------------------------------
   type Mutation {
-    # User Mutations
     createUser(
       name: String!
       email: String!
@@ -139,7 +108,6 @@ export const typeDefs = gql`
 
     loginUser(email: String!, password: String!): AuthPayload
 
-    # CricketMatch Mutations
     createCricketMatch(
       id: ID!
       dateTimeGMT: String!

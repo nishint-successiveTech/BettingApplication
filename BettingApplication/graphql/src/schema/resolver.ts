@@ -3,8 +3,8 @@ import { PubSub } from "graphql-subscriptions";
 
 const BACKEND_URL = "http://localhost:8787/api";
 
-// Setup PubSub for subscriptions
 const pubsub = new PubSub();
+
 const WITHDRAWAL_TOPIC = "WITHDRAWAL_EVENT";
 
 export const resolvers = {
