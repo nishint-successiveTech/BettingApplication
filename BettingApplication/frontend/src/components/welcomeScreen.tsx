@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import Withdrawals from './test'; // make sure path is correct
+import Withdrawals from "./test"; // make sure path is correct
 
 import {
   Box,
@@ -28,8 +28,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import CloseIcon from "@mui/icons-material/Close";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 
 // Particle background component
 const ParticlesBackground = () => {
@@ -39,9 +38,9 @@ const ParticlesBackground = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
+    const ctx = canvas.getContext("2d");
+    const width = (canvas.width = window.innerWidth);
+    const height = (canvas.height = window.innerHeight);
 
     // Create particles
     const createParticles = () => {
@@ -57,35 +56,35 @@ const ParticlesBackground = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
-      
+
       // Update and draw particles
-      particles.current.forEach(particle => {
+      particles.current.forEach((particle) => {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
-        
+
         // Wrap around edges
         if (particle.x > width) particle.x = 0;
         if (particle.x < 0) particle.x = width;
         if (particle.y > height) particle.y = 0;
         if (particle.y < 0) particle.y = height;
-        
+
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
         ctx.fill();
       });
-      
+
       // Draw connections between particles
-      ctx.strokeStyle = alpha('#ffffff', 0.1);
+      ctx.strokeStyle = alpha("#ffffff", 0.1);
       ctx.lineWidth = 0.5;
-      
+
       for (let i = 0; i < particles.current.length; i++) {
         for (let j = i + 1; j < particles.current.length; j++) {
           const dx = particles.current[i].x - particles.current[j].x;
           const dy = particles.current[i].y - particles.current[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
+
           if (distance < 100) {
             ctx.beginPath();
             ctx.moveTo(particles.current[i].x, particles.current[i].y);
@@ -94,7 +93,7 @@ const ParticlesBackground = () => {
           }
         }
       }
-      
+
       animationFrameId.current = requestAnimationFrame(animate);
     };
 
@@ -107,13 +106,13 @@ const ParticlesBackground = () => {
       createParticles();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -121,11 +120,11 @@ const ParticlesBackground = () => {
     <canvas
       ref={canvasRef}
       style={{
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
+        width: "100%",
+        height: "100%",
         zIndex: 0,
       }}
     />
@@ -140,60 +139,70 @@ const FloatingOddsTicker = () => {
     { match: "SA vs WI", odds: "1.95", trending: "up" },
     { match: "PAK vs BAN", odds: "1.75", trending: "down" },
   ]);
-  
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % odds.length);
     }, 3000);
-    
+
     return () => clearInterval(interval);
   }, [odds.length]);
 
   return (
     <Box
       sx={{
-        position: 'absolute',
+        position: "absolute",
         top: 16,
         right: 16,
-        background: alpha('#000', 0.7),
+        background: alpha("#000", 0.7),
         borderRadius: 2,
         p: 1.5,
-        backdropFilter: 'blur(10px)',
-        border: '1px solid',
-        borderColor: alpha('#fff', 0.2),
+        backdropFilter: "blur(10px)",
+        border: "1px solid",
+        borderColor: alpha("#fff", 0.2),
         maxWidth: 250,
         zIndex: 10,
       }}
     >
       <Box display="flex" alignItems="center" mb={1}>
-        <TrendingUpIcon sx={{ fontSize: 20, mr: 1, color: '#00f5ff' }} />
-        <Typography variant="subtitle2" sx={{ fontWeight: 'bold', color: '#fff' }}>
+        <TrendingUpIcon sx={{ fontSize: 20, mr: 1, color: "#00f5ff" }} />
+        <Typography
+          variant="subtitle2"
+          sx={{ fontWeight: "bold", color: "#fff" }}
+        >
           Live Odds
         </Typography>
       </Box>
-      
+
       <Slide direction="left" in key={currentIndex} mountOnEnter unmountOnExit>
         <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Typography variant="body2" sx={{ color: '#fff', mr: 2 }}>
+          <Typography variant="body2" sx={{ color: "#fff", mr: 2 }}>
             {odds[currentIndex].match}
           </Typography>
           <Box display="flex" alignItems="center">
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                fontWeight: 'bold',
-                color: odds[currentIndex].trending === 'up' ? '#4caf50' : '#f44336',
-                mr: 0.5
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: "bold",
+                color:
+                  odds[currentIndex].trending === "up" ? "#4caf50" : "#f44336",
+                mr: 0.5,
               }}
             >
               {odds[currentIndex].odds}
             </Typography>
-            {odds[currentIndex].trending === 'up' ? (
-              <TrendingUpIcon sx={{ fontSize: 16, color: '#4caf50' }} />
+            {odds[currentIndex].trending === "up" ? (
+              <TrendingUpIcon sx={{ fontSize: 16, color: "#4caf50" }} />
             ) : (
-              <TrendingUpIcon sx={{ fontSize: 16, color: '#f44336', transform: 'rotate(45deg)' }} />
+              <TrendingUpIcon
+                sx={{
+                  fontSize: 16,
+                  color: "#f44336",
+                  transform: "rotate(45deg)",
+                }}
+              />
             )}
           </Box>
         </Box>
@@ -205,52 +214,53 @@ const FloatingOddsTicker = () => {
 // Notification component
 const NotificationBar = () => {
   const [showNotification, setShowNotification] = useState(true);
-  
+
   if (!showNotification) return null;
-  
+
   return (
     <Fade in={showNotification}>
       <Box
         sx={{
-          background: 'linear-gradient(90deg, #ff0080, #ff8c00)',
-          color: 'white',
+          background: "linear-gradient(90deg, #ff0080, #ff8c00)",
+          color: "white",
           py: 1,
           px: 2,
           borderRadius: 1,
           mb: 3,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          boxShadow: '0 4px 15px rgba(255, 0, 128, 0.3)',
-          position: 'relative',
-          overflow: 'hidden',
-          '&::before': {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          boxShadow: "0 4px 15px rgba(255, 0, 128, 0.3)",
+          position: "relative",
+          overflow: "hidden",
+          "&::before": {
             content: '""',
-            position: 'absolute',
+            position: "absolute",
             top: 0,
-            left: '-100%',
-            width: '100%',
-            height: '100%',
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-            animation: 'shimmer 3s infinite',
-          }
+            left: "-100%",
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+            animation: "shimmer 3s infinite",
+          },
         }}
       >
         <Box
-  sx={{
-    position: "fixed",
-    bottom: 16,
-    right: 16,
-    width: 300,
-    zIndex: 30,
-    backdropFilter: "blur(10px)",
-    background: "rgba(0,0,0,0.6)",
-    borderRadius: 2,
-    p: 2,
-  }}
->
-  <Withdrawals />
-</Box>
+          sx={{
+            position: "fixed",
+            bottom: 16,
+            right: 16,
+            width: 300,
+            zIndex: 30,
+            backdropFilter: "blur(10px)",
+            background: "rgba(0,0,0,0.6)",
+            borderRadius: 2,
+            p: 2,
+          }}
+        >
+          <Withdrawals />
+        </Box>
 
         <Box display="flex" alignItems="center">
           <EmojiEventsIcon sx={{ mr: 1, fontSize: 20 }} />
@@ -258,9 +268,9 @@ const NotificationBar = () => {
             Welcome bonus: Get 100% bonus on your first deposit!
           </Typography>
         </Box>
-        <IconButton 
-          size="small" 
-          sx={{ color: 'white' }}
+        <IconButton
+          size="small"
+          sx={{ color: "white" }}
           onClick={() => setShowNotification(false)}
         >
           <CloseIcon fontSize="small" />
@@ -273,7 +283,7 @@ const NotificationBar = () => {
 export default function WelcomePage() {
   const router = useRouter();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [activeSport, setActiveSport] = useState(null);
 
   const sports = [
@@ -281,25 +291,28 @@ export default function WelcomePage() {
       name: "Cricket",
       icon: <SportsCricketIcon sx={{ fontSize: 60, color: "#00f5ff" }} />,
       route: "/cricketMatch",
-      description: "Experience the thrill of cricket betting with live matches and competitive odds",
+      description:
+        "Experience the thrill of cricket betting with live matches and competitive odds",
       active: true,
-      features: ["Live Betting", "Player Stats", "Match Predictions"]
+      features: ["Live Betting", "Player Stats", "Match Predictions"],
     },
     {
       name: "Football",
       icon: <SportsSoccerIcon sx={{ fontSize: 60, color: "#ff6b6b" }} />,
       route: null,
-      description: "The world's most popular sport with matches from top leagues",
+      description:
+        "The world's most popular sport with matches from top leagues",
       active: false,
-      features: ["Goal Markets", "Half-Time Bets", "Card Betting"]
+      features: ["Goal Markets", "Half-Time Bets", "Card Betting"],
     },
     {
       name: "Hockey",
       icon: <SportsHockeyIcon sx={{ fontSize: 60, color: "#ffcc00" }} />,
       route: null,
-      description: "Fast-paced action on ice with dynamic betting opportunities",
+      description:
+        "Fast-paced action on ice with dynamic betting opportunities",
       active: false,
-      features: ["Period Betting", "Power Play Odds", "Shootout Specials"]
+      features: ["Period Betting", "Power Play Odds", "Shootout Specials"],
     },
   ];
 
@@ -313,7 +326,7 @@ export default function WelcomePage() {
 
   return (
     <Box
-         sx={{
+      sx={{
         position: "fixed",
         top: 0,
         left: 0,
@@ -330,7 +343,7 @@ export default function WelcomePage() {
     >
       <ParticlesBackground />
       <FloatingOddsTicker />
-      
+
       {/* Animated background elements */}
       <Box
         sx={{
@@ -340,7 +353,8 @@ export default function WelcomePage() {
           width: "300px",
           height: "300px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(0,245,255,0.2) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(0,245,255,0.2) 0%, transparent 70%)",
           animation: "float 8s ease-in-out infinite",
         }}
       />
@@ -352,7 +366,8 @@ export default function WelcomePage() {
           width: "400px",
           height: "400px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,0,212,0.2) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(255,0,212,0.2) 0%, transparent 70%)",
           animation: "float 10s ease-in-out infinite",
           animationDelay: "1s",
         }}
@@ -360,14 +375,28 @@ export default function WelcomePage() {
 
       {/* Header */}
       <Fade in timeout={1000}>
-        <Box sx={{ position: "relative", zIndex: 2, mt: 4, mb: 2, textAlign: "center" }}>
-          <Box display="flex" alignItems="center" justifyContent="center" mb={1}>
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 2,
+            mt: 4,
+            mb: 2,
+            textAlign: "center",
+          }}
+        >
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            mb={1}
+          >
             <CasinoIcon sx={{ fontSize: 40, mr: 2, color: "#00f5ff" }} />
             <Typography
               variant="h3"
               sx={{
                 fontWeight: "bold",
-                background: "linear-gradient(90deg, #00f5ff, #ff00d4, #00f5ff, #ff00d4)",
+                background:
+                  "linear-gradient(90deg, #00f5ff, #ff00d4, #00f5ff, #ff00d4)",
                 backgroundSize: "300% auto",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -377,47 +406,46 @@ export default function WelcomePage() {
             >
               BettingBaazi.com
             </Typography>
-              {/* Wallet Icon Button */}
-    
-          </Box><Box
-  sx={{
-    position: "fixed",
-    top: 16,
-    left: 16,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    zIndex: 20,
-    cursor: "pointer",
-  }}
-  onClick={() => router.push("/wallet")}
->
-  <AccountBalanceWalletIcon
-    sx={{
-      color: "#00f5ff",
-      fontSize: "3rem", // pehle 2rem tha, ab 3rem
-      "&:hover": {
-        color: "#ff00d4",
-        transform: "scale(1.3)", // slightly bigger scale
-        transition: "all 0.3s ease",
-      },
-    }}
-    fontSize="inherit"
-  />
-  <Typography
-    variant="subtitle1" // pehle caption tha, ab subtitle1
-    sx={{
-      color: "#00f5ff",
-      mt: 1,
-      fontWeight: "bold",
-      fontSize: "1.2rem", // text aur bada
-      "&:hover": { color: "#ff00d4" },
-    }}
-  >
-    My Wallet
-  </Typography>
-</Box>
-          
+            {/* Wallet Icon Button */}
+          </Box>
+          <Box
+            sx={{
+              position: "fixed",
+              top: 16,
+              left: 16,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              zIndex: 20,
+              cursor: "pointer",
+            }}
+            onClick={() => router.push("/wallet")}
+          >
+            <AccountBalanceWalletIcon
+              sx={{
+                color: "#00f5ff",
+                fontSize: "3rem", // pehle 2rem tha, ab 3rem
+                "&:hover": {
+                  color: "#ff00d4",
+                  transform: "scale(1.3)", // slightly bigger scale
+                  transition: "all 0.3s ease",
+                },
+              }}
+              fontSize="inherit"
+            />
+            <Typography
+              variant="subtitle1" // pehle caption tha, ab subtitle1
+              sx={{
+                color: "#00f5ff",
+                mt: 1,
+                fontWeight: "bold",
+                fontSize: "1.2rem", // text aur bada
+                "&:hover": { color: "#ff00d4" },
+              }}
+            >
+              My Wallet
+            </Typography>
+          </Box>
 
           <NotificationBar />
 
@@ -431,8 +459,8 @@ export default function WelcomePage() {
               maxWidth: 700,
             }}
           >
-            Experience next-level sports excitement. Choose your favorite sport and
-            start your journey. Only Cricket is active right now!
+            Experience next-level sports excitement. Choose your favorite sport
+            and start your journey. Only Cricket is active right now!
           </Typography>
         </Box>
       </Fade>
@@ -465,79 +493,98 @@ export default function WelcomePage() {
                   p: 4,
                   borderRadius: "20px",
                   backdropFilter: "blur(10px)",
-                  background: activeSport === index 
-                    ? "linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))"
-                    : "rgba(255,255,255,0.05)",
+                  background:
+                    activeSport === index
+                      ? "linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))"
+                      : "rgba(255,255,255,0.05)",
                   border: "1px solid",
-                  borderColor: activeSport === index ? "rgba(0,245,255,0.5)" : "rgba(255,255,255,0.2)",
+                  borderColor:
+                    activeSport === index
+                      ? "rgba(0,245,255,0.5)"
+                      : "rgba(255,255,255,0.2)",
                   textAlign: "center",
                   color: "#fff",
                   cursor: sport.route ? "pointer" : "not-allowed",
                   transition: "all 0.4s ease",
-                  transform: activeSport === index ? "translateY(-8px) scale(1.03)" : "translateY(0) scale(1)",
-                  boxShadow: activeSport === index 
-                    ? "0px 0px 30px rgba(0,255,255,0.6)" 
-                    : "0px 10px 30px rgba(0,0,0,0.2)",
+                  transform:
+                    activeSport === index
+                      ? "translateY(-8px) scale(1.03)"
+                      : "translateY(0) scale(1)",
+                  boxShadow:
+                    activeSport === index
+                      ? "0px 0px 30px rgba(0,255,255,0.6)"
+                      : "0px 10px 30px rgba(0,0,0,0.2)",
                   position: "relative",
                   overflow: "hidden",
-                  "&::before": activeSport === index ? {
-                    content: '""',
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: "4px",
-                    background: "linear-gradient(90deg, #00f5ff, #ff00d4)",
-                    animation: "progress 2s linear infinite",
-                  } : {},
+                  "&::before":
+                    activeSport === index
+                      ? {
+                          content: '""',
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          height: "4px",
+                          background:
+                            "linear-gradient(90deg, #00f5ff, #ff00d4)",
+                          animation: "progress 2s linear infinite",
+                        }
+                      : {},
                 }}
                 onClick={() => sport.route && router.push(sport.route)}
               >
                 {sport.active && (
-                  <Chip 
-                    icon={<FiberManualRecordIcon />} 
-                    label="LIVE" 
+                  <Chip
+                    icon={<FiberManualRecordIcon />}
+                    label="LIVE"
                     size="small"
                     color="error"
-                    sx={{ 
-                      position: "absolute", 
-                      top: 16, 
+                    sx={{
+                      position: "absolute",
+                      top: 16,
                       right: 16,
                       animation: "pulse 2s infinite",
                     }}
                   />
                 )}
-                
+
                 <Box
                   sx={{
-                    transform: activeSport === index ? "scale(1.1)" : "scale(1)",
+                    transform:
+                      activeSport === index ? "scale(1.1)" : "scale(1)",
                     transition: "transform 0.4s ease",
                     mb: 2,
                   }}
                 >
                   {sport.icon}
                 </Box>
-                
+
                 <Typography
                   variant="h5"
-                  sx={{ 
-                    mt: 2, 
-                    fontWeight: "bold", 
+                  sx={{
+                    mt: 2,
+                    fontWeight: "bold",
                     letterSpacing: 1,
-                    background: activeSport === index 
-                      ? "linear-gradient(90deg, #00f5ff, #ff00d4)"
-                      : "none",
-                    WebkitBackgroundClip: activeSport === index ? "text" : "none",
-                    WebkitTextFillColor: activeSport === index ? "transparent" : "#fff",
+                    background:
+                      activeSport === index
+                        ? "linear-gradient(90deg, #00f5ff, #ff00d4)"
+                        : "none",
+                    WebkitBackgroundClip:
+                      activeSport === index ? "text" : "none",
+                    WebkitTextFillColor:
+                      activeSport === index ? "transparent" : "#fff",
                   }}
                 >
                   {sport.name}
                 </Typography>
-                
-                <Typography variant="body2" sx={{ mt: 2, color: "rgba(255,255,255,0.7)" }}>
+
+                <Typography
+                  variant="body2"
+                  sx={{ mt: 2, color: "rgba(255,255,255,0.7)" }}
+                >
                   {sport.description}
                 </Typography>
-                
+
                 <Box sx={{ mt: 2, mb: 3 }}>
                   {sport.features.map((feature, i) => (
                     <Chip
@@ -553,24 +600,27 @@ export default function WelcomePage() {
                     />
                   ))}
                 </Box>
-                
+
                 <Button
                   variant="contained"
                   sx={{
                     mt: 3,
                     borderRadius: "50px",
-                    background: sport.active 
+                    background: sport.active
                       ? "linear-gradient(90deg, #00f5ff, #ff00d4)"
                       : "rgba(255,255,255,0.2)",
                     backgroundSize: "200% auto",
                     fontWeight: "bold",
                     px: 4,
                     transition: "all 0.3s ease",
-                    "&:hover": sport.active ? {
-                      background: "linear-gradient(90deg, #ff00d4, #00f5ff)",
-                      transform: "scale(1.1)",
-                      boxShadow: "0 0 20px rgba(0,245,255,0.5)",
-                    } : {},
+                    "&:hover": sport.active
+                      ? {
+                          background:
+                            "linear-gradient(90deg, #ff00d4, #00f5ff)",
+                          transform: "scale(1.1)",
+                          boxShadow: "0 0 20px rgba(0,245,255,0.5)",
+                        }
+                      : {},
                   }}
                   disabled={!sport.route}
                 >
@@ -584,9 +634,12 @@ export default function WelcomePage() {
 
       {/* Footer */}
       <Fade in timeout={2000}>
-        <Box sx={{ mt: 8, textAlign: "center", position: "relative", zIndex: 2 }}>
+        <Box
+          sx={{ mt: 8, textAlign: "center", position: "relative", zIndex: 2 }}
+        >
           <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.5)" }}>
-            © {new Date().getFullYear()} BettingBaazi.com • Must be 18+ to play • Please gamble responsibly
+            © {new Date().getFullYear()} BettingBaazi.com • Must be 18+ to play
+            • Please gamble responsibly
           </Typography>
         </Box>
       </Fade>
@@ -594,32 +647,60 @@ export default function WelcomePage() {
       {/* Global styles for animations */}
       <style jsx global>{`
         @keyframes gradientText {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
-        
+
         @keyframes float {
-          0% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
-          100% { transform: translateY(0) rotate(0deg); }
+          0% {
+            transform: translateY(0) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(5deg);
+          }
+          100% {
+            transform: translateY(0) rotate(0deg);
+          }
         }
-        
+
         @keyframes pulse {
-          0% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7); }
-          70% { box-shadow: 0 0 0 10px rgba(244, 67, 54, 0); }
-          100% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0); }
+          0% {
+            box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+          }
         }
-        
+
         @keyframes progress {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
-        
+
         @keyframes shimmer {
-          0% { left: -100%; }
-          100% { left: 100%; }
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 100%;
+          }
         }
       `}</style>
     </Box>

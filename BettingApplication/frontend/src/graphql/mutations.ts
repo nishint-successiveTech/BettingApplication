@@ -1,8 +1,5 @@
 import { gql } from "@apollo/client";
 
-// -------------------
-// User Mutations
-// -------------------
 export const CREATE_USER = gql`
   mutation createUser(
     $name: String!
@@ -38,9 +35,6 @@ export const LOGIN_USER = gql`
   }
 `;
 
-// -------------------
-// REST Matches Queries
-// -------------------
 export const GET_MATCHES = gql`
   query GetMatches {
     matches {
@@ -69,9 +63,6 @@ export const GET_MATCH = gql`
   }
 `;
 
-// -------------------
-// CricketMatch Queries
-// -------------------
 export const GET_CRICKET_MATCHES = gql`
   query GetCricketMatches {
     cricketMatches {
@@ -119,9 +110,6 @@ export const GET_USER_MONEY = gql`
   }
 `;
 
-// -------------------
-// CricketMatch Mutations
-// -------------------
 export const CREATE_CRICKET_MATCH = gql`
   mutation CreateCricketMatch(
     $id: ID!

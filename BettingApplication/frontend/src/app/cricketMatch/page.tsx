@@ -6,7 +6,7 @@ import { Container, CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CricketMatches from "@/components/cricketMatch";
 
-const theme = createTheme(); // 👈 Default MUI theme (isme background.paper hoga)
+const theme = createTheme(); 
 
 export default function CricketMatchesPage() {
   return (

@@ -307,16 +307,3 @@ const BettingPage = () => {
 };
 
 export default BettingPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
