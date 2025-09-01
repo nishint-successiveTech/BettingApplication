@@ -18,7 +18,7 @@
 me<img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-10-49" src="https://github.com/user-attachments/assets/91886e5b-7f0c-4257-9372-5996759086c4" />
 nt<img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-10-51" src="https://github.com/user-attachments/assets/2311b598-01f1-489a-bff4-1fde8c5500f3" />
 s/assets/40666d12-e1aa-4de2-8b4f-7c6cc84a144c" />
-<img wid<img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-11-44" src="https://github.com/user-attachments/assets/30f5c2f5-3423-4340-bb4c-b745d6a99caa" />
+
 th="1920" height="1080" alt="Screenshot from 2025-09-02 00-10-41" src="https://github.com/user-attachment<img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-11-51" src="https://github.com/user-attachments/assets/d2acac9b-8c42-4c0d-97cf-4b95eb6e7919" />
 s/assets/32a40dba-5767-4452-bc12-3687db2170c3" />
 <img width="1920" height="1080" alt="Screenshot from 2025-09-02 00-11-54" src="https://github.com/user-attachments/assets/77dc4bc7-00d5-499e-a58a-cecf9a22ea09" />
